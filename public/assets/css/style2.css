@@ -1,0 +1,232 @@
+/* style custom profile page*/
+.hover-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-icon {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.user-icon:hover {
+    transform: scale(1.1);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    background: #fff;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.hover-dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -8px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent; 
+    border-right: 8px solid transparent; 
+    border-bottom: 8px solid #fff; 
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: background 0.2s ease-in-out;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 123, 255, 0.1);
+    color: #0056b3;
+}
+
+.btn-primary-nd {
+    background: linear-gradient(135deg, #0a3ea9 0%, #08338e 100%);
+    border-color: #08338e;
+    font-weight: 600;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.btn-primary-nd:hover {
+    background: linear-gradient(135deg, #08338e 0%, #062766 100%);
+    border-color: #062766;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn-warning-nd {
+    background: linear-gradient(135deg, #0c3e8e 0%, #08338e 100%);
+    border-color: #08338e;
+    font-weight: 600;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 20px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.btn-warning-nd:hover {
+    background: linear-gradient(135deg, #08338e 0%, #062860 100%);
+    border-color: #062860;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn-danger-nd {
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+    border-color: #a93226;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 12px 20px;
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.btn-danger-nd:hover {
+    background: linear-gradient(135deg, #a93226 0%, #922b21 100%);
+    border-color: #922b21;
+    transform: translateY(-3px);
+}
+
+.btn-light {
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 2px solid #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-light:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.modal-body input[type="file"] {
+    padding: 10px;
+}
+
+.btn-close {
+    font-size: 24px;
+    opacity: 0.6;
+}
+
+.btn-close:hover {
+    opacity: 1;
+}
+
+.card-header {
+    padding: 20px;
+}
+
+.card-header img {
+    transition: none;
+}
+
+.modal-content {
+    border-radius: 8px;
+}
+/* end */
+
+/* Custom Page Laporan Kinerja */
+.row .col-md-3 img {
+    width: 100%;
+    height: auto; 
+    box-sizing: border-box;
+    transition: outline 0.3s ease-in-out;
+}
+
+.row .col-md-3:hover img {
+    outline: 10px solid #08338e;
+}
+
+.carousel-item {
+    padding: 20px; 
+}
+
+.custom-btn {
+    background-color: #08338e;
+    border: 2px solid #08338e;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: white;
+    color: #08338e;
+    border: 2px solid #08338e;
+}
+
+@media (min-width: 768px) {
+    .card-body-nd {
+        min-height: 400px;
+    }
+}
+/* end */
+
+/* Custom penatausahaan-penerimaan */
+@media (min-width: 768px) {
+    .fs-md-custom {
+        font-size: 5rem !important;
+        font-weight: 800 !important;
+    }
+}
+
+.fs-custom {
+    font-size: 2.5rem;
+}
+/* end */
+
+/* button custom pages */
+.btn-custom {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background: linear-gradient(45deg, #1e90ff, #0044cc);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-custom .arrow {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(45deg, #007bff, #002080);
+    transform: scale(1.05);
+    color: rgb(255, 255, 255);
+}
+/* end */

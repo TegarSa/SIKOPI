@@ -1,0 +1,2053 @@
+[
+    {
+        "id": "id-ac",
+        "nama": "Aceh",
+        "jml_mitra": 25,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Tgk Chik Ditiro Sigli Kabupaten Pidie",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Subulussalam",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Pendidikan Aceh",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Kelautan & Perikanan Aceh",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Nagan Raya (RSUD Sultan Iskandar Muda)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Aceh Selatan (Tapak Tuan)",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Aceh Selatan (Tapak Tuan)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Aceh Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Aceh Barat Daya",
+                "jml_uptd": 13
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pidie",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD dr. Zubir Mahmud Kabupaten Aceh Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Langsa, Aceh",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-jt",
+        "nama": "Jawa Tengah",
+        "jml_mitra": 522,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Kabupaten Batang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboaratorium Lingkungan Kabupaten Tegal ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Lokal Wisata Kabupaten Banyumas (Baturraden)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Banjarnegara",
+                "jml_uptd": 35
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Banjarnegara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Dinas Pariwisata Kabupaten Banyumas",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan Hidup Dinas Lingkungan Hidup Kabupaten Banyumas",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "WONORSUD KRT. Setjonegoro Kabupaten WonosoboSOBO",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Wonosobo",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Purbalingga",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Purbalingga",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Banyumas",
+                "jml_uptd": 40
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Banyumas",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Ponorogo",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kebumen",
+                "jml_uptd": 35
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Kebumen",
+                "jml_uptd": 11
+            },
+            {
+                "nama_uptd": "UPTD DLHKP Kebumen",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Brebes",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Pekalongan",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "RSUD Kota Pekalongan",
+                "jml_uptd": 6
+            },
+            {
+                "nama_uptd": "UPTD Persampahan DLH Kabupaten Magelang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan DLH Kab. Tegal",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Balai Inseminasi Buatan Dinas Peternakan Semarang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sragen",
+                "jml_uptd": 21
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sragen",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Semarang",
+                "jml_uptd": 26
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Semarang",
+                "jml_uptd": 5
+            },
+            {
+                "nama_uptd": "RSJ Prof Suroyo Magelang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Temanggung",
+                "jml_uptd": 26
+            },
+            {
+                "nama_uptd": "RSUD Temanggung",
+                "jml_uptd": 4
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Semarang",
+                "jml_uptd": 39
+            },
+            {
+                "nama_uptd": "RSUD Kota Semarang",
+                "jml_uptd": 22
+            },
+            {
+                "nama_uptd": "BKAD Surakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BPPKAD Aset Daerah Surakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Dadirejo Kabupaten Purworejo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Dadirejo Kabupaten Purworejo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Purworejo",
+                "jml_uptd": 27
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Purworejo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Sekretaris Daerah Kabupaen Wonogiri",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Laboratorium Kesehatan Kabupaten Boyolali",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Demak",
+                "jml_uptd": 14
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Demak",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "RSUD Kabuate Purworejo (RAA Tjokronegoro)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Wonogiri",
+                "jml_uptd": 34
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Demak",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "Badan Keuangan Aset Daerah Kabupaten Banyumas",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Klaten (Bagas Waras)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SPI IAIN Surakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Biro Perekonomian Jawa Tengah",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "PPSDM Migas Cepu Kabupaten Blora",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Limpung Kabupaten Batang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Boyolali",
+                "jml_uptd": 36
+            },
+            {
+                "nama_uptd": "UPT Puskesmas Brebes (Bumiayu)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Batang",
+                "jml_uptd": 21
+            },
+            {
+                "nama_uptd": "RS Onkologi Solo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Klaten (Gantiwarno)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Pekalongan",
+                "jml_uptd": 28
+            },
+            {
+                "nama_uptd": "UPTD Puskesas Kabupaten Brebes (2)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSI PKU Muhammadiyah Kabupaten Pekalongan (PKU Pekajangan)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Banyumas (Pakuncen)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMK N 1 Sragen",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Bumiayu Kabupaten Brebes",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pekalongan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Jepara (Mlonggo)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-be",
+        "nama": "Bengkulu",
+        "jml_mitra":27,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Kabupaten Rejang Lebong",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Kaur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Rejang Lebong",
+                "jml_uptd": 21
+            },
+            {
+                "nama_uptd": "Dinas Pekerjaan Umum Kabupaten Kaur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Pekerjaan Umum Kota Bengkulu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSKJ Kota Bengkulu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Koperasi Kota Bengkulu",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-bt",
+        "nama": "Banten",
+        "jml_mitra": 163,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "BPKAD Kota SerangG",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Lingkungan Hidup Kota Serang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Serang",
+                "jml_uptd": 16
+            },
+            {
+                "nama_uptd": "Labkesda Kabupaten Serang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Cilegon",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Tangerang Selatan",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "RSUD Kota Tangerang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BKAD Kota Tangerang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Tangerang Selatan",
+                "jml_uptd": 33
+            },
+            {
+                "nama_uptd": "Pemerintah Daerah Kota Serang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Pengelolaan Sampah DLH Kota Cilegon",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Pengelola Air Minum Kota Tangerang Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Biro Perekonomian Tangerang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPDB Kota Cilegon",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Tangerang",
+                "jml_uptd": 44
+            },
+            {
+                "nama_uptd": "RSUD Kabpaten Tangerang",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "UPTD Kabupaten Tangerang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Cilegon",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Lebak",
+                "jml_uptd": 43
+            },
+            {
+                "nama_uptd": "RSUD Malingping",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Tangerang",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-kb",
+        "nama": "Kalimantan Barat",
+        "jml_mitra": 61,
+        "jml_kota": 0,
+        "wilayah": 3,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Singkawang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kayong Utara",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "RSUD dr Agoesdjam Kabupaten Ketapang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kesehatan Kabupaten Ketapang",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kapuas Hulu",
+                "jml_uptd": 23
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sanggau, Kalbar",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sanggau",
+                "jml_uptd": 1
+            }
+
+        ]
+    },
+    {
+        "id": "id-bb",
+        "nama": "Bangka-Belitung",
+        "jml_mitra": 83,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Kabupaten Belitung",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Belitung",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "Labkesda Tangerang Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bangka Barat (Sejiran setason)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Sejiran Setason Bangka Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Laboreatorium Kesehatan Bangka Belitung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMK N 1 Tanjungpandan Bangka Belitung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 1 Manggar Kabupaten Belitung Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMK Negeri 1 Kelapa",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Bangka Belitung",
+                "jml_uptd": 64
+            }
+        ]
+    },
+    {
+        "id": "id-ba",
+        "nama": "Bali",
+        "jml_mitra": 1,
+        "jml_kota": 0,
+        "wilayah": 5,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPT Persampahan Kabupaten Gianyar",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ji",
+        "nama": "Jawa Timur",
+        "jml_mitra": 498,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "PACRSUD Kabupaten Bojonegoro (Sumberejo)ITAN",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Malang",
+                "jml_uptd": 16
+            },
+            {
+                "nama_uptd": "RSUD Waluyo Jati Kabupaten Probolinggo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Pacitan",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pacitan",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "Puskemas Kabupaten Tulungagung",
+                "jml_uptd": 32
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Tulungagung",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Blitar",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Blitar",
+                "jml_uptd": 8
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kediri",
+                "jml_uptd": 37
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Kediri",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Ponorogo",
+                "jml_uptd": 84
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Ponorogo",
+                "jml_uptd": 7
+            },
+            {
+                "nama_uptd": "UPT Pasar Induk Among Tani",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sumenep",
+                "jml_uptd": 30
+            },
+            {
+                "nama_uptd": "RSUD KOTA MALANG",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Laboratorium Kesehatan Kabupaten Malang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Besuki Situbondo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Jetis Madiun",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Madiun",
+                "jml_uptd": 26
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Jombang",
+                "jml_uptd": 34
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Jombang",
+                "jml_uptd": 13
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sumenep (Dr. H. Moh.Anwar)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT. Pengembangan Benih Hortikultura KHB Sidomulyo Batu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kanjuruhan Kepanjen Kabupaten Malang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Magetan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Magetan",
+                "jml_uptd": 22
+            },
+            {
+                "nama_uptd": "SMKN 1 Purwosari Bojonegoro",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Biro Perekonomian Pemerintah Kota Batu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Dampit",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bangkalan",
+                "jml_uptd": 22
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bangkalan",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "SMK N Purwosari Bojonegoro",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan DLH Kabupaten Banyuwangi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Pacitan (Bubakan)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Pemberdayaan Masyarakat Blitar",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Sidosermo Kota Surabaya",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Mojokerto (Wahidin Sudiro Husodo)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Malang",
+                "jml_uptd": 39
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Malang (Dampit)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Bojonegoro",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Madiun",
+                "jml_uptd": 6
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Mojokerto",
+                "jml_uptd": 27
+            }
+        ]
+    },
+    {
+        "id": "id-ks",
+        "nama": "Kalimantan Selatan",
+        "jml_mitra": 69,
+        "jml_kota": 0,
+        "wilayah": 3,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSGM Kota Banjarmasin (RSGM Gusti Hasan Aman)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "LabKesDa Kab Banjarmasin",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Banjarmasin",
+                "jml_uptd": 28
+            },
+            {
+                "nama_uptd": "RSUD Kota Banjarmasin",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Laboratorium Kesehatan Provinsi Kalimantan Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Laboratorium Kesehatan Masyarakat Tanah Bumbu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Laboratorium Kesehatan Daerah Dinas Kesehatan Kalimantan Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Banjar",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Hulu Sungai Tengah (H. Damanhuri Barabai)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Rumah Sakit Kota Bhayangkara, Banjarmasin",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-nt",
+        "nama": "Nusa Tenggara Timur",
+        "jml_mitra": 3,
+        "jml_kota": 0,
+        "wilayah": 5,
+        "list_uptd": [
+            {
+                "nama_uptd": "Rumh Sakit Jiwa Naimata Kota Kupang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Nauimata Kota Kupang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD  Lembata (Lewoleba)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-se",
+        "nama": "Sulawesi Selatan",
+        "jml_mitra": 5,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Kabupaten Bantaeng (Makkatutu)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Syekh Yusuf Kabupaten Gowa",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Lanto DG Pasewang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bulukumba (H Andi Sulthan)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUP Kota Makassar (Dr Tadjuddin Chalid )",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-kr",
+        "nama": "Kepulauan Riau",
+        "jml_mitra": 50,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bintan",
+                "jml_uptd": 4
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Karimun",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "SPAM Kota Tanjungpinang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Batam",
+                "jml_uptd": 16
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Batam",
+                "jml_uptd": 20
+            },
+            {
+                "nama_uptd": "SMKN 1 Bintan Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 1 Bintan ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 1 Tanjungpinang  ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 1 Batam ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 2 Batam ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 6 Batam ",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ib",
+        "nama": "Irian Jaya Barat",
+        "jml_mitra": 0,
+        "jml_kota": 0,
+        "wilayah": 6,
+        "list_uptd": [
+            {
+                "nama_uptd": "Belum ada mitra",
+                "jml_uptd": 0
+            }
+        ]
+    },
+    {
+        "id": "id-su",
+        "nama": "Sumatera Utara",
+        "jml_mitra": 18,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "DLH Kabupaten Asahan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPDB Gunung Sitoli ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Nias",
+                "jml_uptd": 5
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Nias ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Mandailing Natal",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Karo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Musi Rawas Utara",
+                "jml_uptd": 5
+            },
+            {
+                "nama_uptd": "Rumah Sakit Kecamatan Gunungsitoli",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ri",
+        "nama": "Riau",
+        "jml_mitra": 56,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Kota Dumai",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Indragiri Hilir",
+                "jml_uptd": 29
+            },
+            {
+                "nama_uptd": "RSUD Kabuparen Indragiri Hilir",
+                "jml_uptd": 4
+            },
+            {
+                "nama_uptd": "RSUD Puri Husada",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bengkalis",
+                "jml_uptd": 18
+            },
+            {
+                "nama_uptd": "Universitas Riau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pelalawan (Selasih), Riau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSJ Tampan Kota Pekanbaru",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-sw",
+        "nama": "Sulawesi Utara",
+        "jml_mitra": 4,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "WCS Sulawesi Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Anugrah Tomohon Sulawesi Utara Pra BLUD",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Dr. Djasamen Saragih Kota Pematang Siantar",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bolaang Mongondow, Sulawesi Utara",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ku",
+        "nama": "Kalimantan Utara",
+        "jml_mitra": 18,
+        "jml_kota": 0,
+        "wilayah": 3,
+        "list_uptd": [
+            {
+                "nama_uptd": "SMKN SPP Kabupaten Malinau ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Tarakan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Malinau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Tana Tidung ",
+                "jml_uptd": 5
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Tana Tidung ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Sebengkok Kota Tarakan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Juata Kota Tarakan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Tarakan",
+                "jml_uptd": 5
+            },
+            {
+                "nama_uptd": "Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Bulungan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Tarakan (Gunung Lingkas)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-la",
+        "nama": "Maluku Utara",
+        "jml_mitra": 3,
+        "jml_kota": 0,
+        "wilayah": 6,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPTD BKKPD Provinsi Maluku Utara (wcs)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Perindustrian dan Dinas Koperasi UKM Provinsi Maluku Utara",
+                "jml_uptd": 2
+            }
+        ]
+    },
+    {
+        "id": "id-sb",
+        "nama": "Sumatera Barat",
+        "jml_mitra": 12,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Pemerintah Provinsi Sumatera Barat ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RS Paru Sumatera Barat ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Fasilitas Pendanaan Kota Solok",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Payakumbuh",
+                "jml_uptd": 8
+            },
+            {
+                "nama_uptd": "RSUD Kota Payakumbuh",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ma",
+        "nama": "Maluku",
+        "jml_mitra": 17,
+        "jml_kota": 0,
+        "wilayah": 6,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Cendrawasih Dobo Kabupaten Kepulauan Aru",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Ambon",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Ambon",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Puskesmas Kepulauan Aru (Dobo,Siwalima,Patidjalabil)",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "Rumah Sakit Umum Daerah Cendrawasih Dobo",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Kepulauan Aru (Cendrawasih)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-nb",
+        "nama": "Nusa Tenggara Barat",
+        "jml_mitra": 22,
+        "jml_kota": 0,
+        "wilayah": 5,
+        "list_uptd": [
+            {
+                "nama_uptd": "BSI Kabupaten Lombok Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Sondosia Kabupaten Bima",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Lombok Barat",
+                "jml_uptd": 20
+            }
+        ]
+    },
+    {
+        "id": "id-sg",
+        "nama": "Sulawesi Tenggara",
+        "jml_mitra": 355,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Provinsi Sulawesi Tenggara",
+                "jml_uptd": 307
+            },
+            {
+                "nama_uptd": "RSUD Provinsi Sulawesi Tenggara",
+                "jml_uptd": 43
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Wakatobi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMK N 2 Kolaka Utara, Kabupaten Kaloka",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Konawe",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Rumah Sakit Kabupaten Kolaka (Benyamin Guluh)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RS Kabupaten Kolaka (Benyamin Guluh)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-st",
+        "nama": "Sulawesi Tengah",
+        "jml_mitra": 19,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Kolaka Utara",
+                "jml_uptd": 16
+            },
+            {
+                "nama_uptd": "RSUD Kolaka Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sigi, Sulawesi Tengah",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Buol, Sulawesi Tengah",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-pa",
+        "nama": "Papua",
+        "jml_mitra": 38,
+        "jml_kota": 0,
+        "wilayah": 6,
+        "list_uptd": [
+            {
+                "nama_uptd": "RSUD Merauke, Kabupaten Merauke",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Memberamo Raya Papua",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Timika",
+                "jml_uptd": 12
+            },
+            {
+                "nama_uptd": "Labkesda Kabupaten Lingkungan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RS Kabupaten Timika (RS Waa Bantii)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Merauke",
+                "jml_uptd": 20
+            },
+            {
+                "nama_uptd": "UPTD Kehutanan Provinsi Papua Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Sorong (Sele Be Solu)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-jr",
+        "nama": "Jawa Barat",
+        "jml_mitra": 714,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPTD Persampahan Kota Depok",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Karawang",
+                "jml_uptd": 50
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Indramayu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan Kabupaten Garut",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Perparkiran Kota Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Bekasi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sumedang",
+                "jml_uptd": 35
+            },
+            {
+                "nama_uptd": "Labkesda Kabupaten Sumedang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Cimahi",
+                "jml_uptd": 13
+            },
+            {
+                "nama_uptd": "Puskeswan Kota Cimahi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kota Cimahi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bandung",
+                "jml_uptd": 62
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bandung",
+                "jml_uptd": 15
+            },
+            {
+                "nama_uptd": "Labkesda Kota Bogor ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Banjar",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "RSUD Kota Banjar",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "UPT Angkutan Kota Bandung ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Jatisari Kabupaten Karawang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Karawang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSP Kabupaten Karawang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Kebersihan Dinas Lingkungan Hidup Kota Bekasi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan Keuangan dan Aset Daerah KAbupaten Subang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Laboratorium Kesehatan Daerah Kota Depok ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Cirebon",
+                "jml_uptd": 60
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Cirebon",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Labkesda Kota Depok",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPDB Kabupaten Karawang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Pangandaran",
+                "jml_uptd": 15
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pangandaran",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 1 Sukabumi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sukabumi",
+                "jml_uptd": 58
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sukabumi",
+                "jml_uptd": 9
+            },
+            {
+                "nama_uptd": "UPT Pengelolaan Sampah DLH Kabupaten Cirebon",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Persampahan Kota Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Garut",
+                "jml_uptd": 67
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Garut",
+                "jml_uptd": 8
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Bogor",
+                "jml_uptd": 29
+            },
+            {
+                "nama_uptd": "PPSDM Geominerba Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan DLH Kab. Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kesehatan Kerja Provinsi Jawa Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Pengelolaan Sampah DLHK Kota Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Bekasi",
+                "jml_uptd": 56
+            },
+            {
+                "nama_uptd": "RSUD Kota Bekasi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Bogor",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Majalengka",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sukabumi (Surade)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Puskesmas Kota Depok",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bekasi",
+                "jml_uptd": 53
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bekasi",
+                "jml_uptd": 50
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Bekasi (Karang Bahagia)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Pasundan Kabupaten Garut",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "PPSDM Geominerba Kota Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Puskesmas Kota Bandung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Garut",
+                "jml_uptd": 32
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Ciamis",
+                "jml_uptd": 37
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bogor (ciawi)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-ki",
+        "nama": "Kalimantan Timur",
+        "jml_mitra": 93,
+        "jml_kota": 0,
+        "wilayah": 3,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puskesmas Kota Bontang",
+                "jml_uptd": 6
+            },
+            {
+                "nama_uptd": "Labkesda Kota Bontang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kutai Barat (Barong Tongkok, Melak)",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "UPDB Kabupaten Kutai Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD RSUD Pratana Sendawar Kutai Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Ratu Aji Putri Botung Penajam Paser Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Biro Perekonomian Kutai Barat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD RSUD PRATAMA SENDAWAR",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Smarinda",
+                "jml_uptd": 26
+            },
+            {
+                "nama_uptd": "RSUD Kota Samarinda",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Puskesmas Gunung Tabur Kabupaten Berau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Pemerintah Provinsi Kalimantan Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kutai Kartenegara",
+                "jml_uptd": 32
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Kutai Kartanegara",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "BUMK Kabupaten Berau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Mahakam Ulu",
+                "jml_uptd": 2
+            },
+            {
+                "nama_uptd": "RSUD KORPRI Kota Samarinda",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPDB Kabupaten Bontang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPDB Kabupaten Berau",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-1024",
+        "nama": "Lampung",
+        "jml_mitra": 15,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPT Pengelolaan Laboratorium Lingkungan Provinsi Lampung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Pengelolaan Laboratorium Lingkungan Provinsi Lampung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Politeknik Negeri Lampung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Mesuji",
+                "jml_uptd": 10
+            },
+            {
+                "nama_uptd": "Dinas Ketahanan Pangan, Tanaman Pangan dan Hortikultura Provinsi Lampung",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Lampung Tengah",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-jk",
+        "nama": "Jakarta Raya",
+        "jml_mitra": 20,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "Dinas Pemuda dan Olahraga DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BPPP DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT Angkutan Perairan DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "DLH Laboratorium Kesehatan Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "DLH DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "LLHD DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Kementerian Lingkungan Hidup dan Kehutanan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Akademi Perawat UPT Dinas Kesehatan DKI",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Dinas Kesehatan Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Cakung Kota Jakarta Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Pendidikan DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Senen Jakarta Pusat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Unit Pengelolaan Perparkiran Dinas Perhubungan DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kepulauan Seribu Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "PPSDM KEBTKE Kota Jakarta Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Jakarta Barat (Kebon Jeruk)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSGMP Kota Jakarta Pusat",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Jakarta Barat (Tambora)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Administrasi Kepulauan Seribu, kepulauan seribu utara, DKI Jakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSGM Kota Jakarta Pusat (Yarsi)",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-go",
+        "nama": "Gorontalo",
+        "jml_mitra": 1,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "Universitas Negeri Gorontalo",
+                "jml_uptd": 11
+            }
+        ]
+    },
+    {
+        "id": "id-yo",
+        "nama": "Yogyakarta",
+        "jml_mitra": 151,
+        "jml_kota": 0,
+        "wilayah": 1,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPDB Kabupaten Tangerang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Jogja",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Gunung Kidul",
+                "jml_uptd": 30
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Gunung Kidul",
+                "jml_uptd": 7
+            },
+            {
+                "nama_uptd": "Dinas Pendidikan Pemuda dan Olahraga DIY",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Teras Malioboro",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Persampahan Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan Pengelolaan Keuangan, Pendapatan dan Aset Daerah Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Yogyakarta",
+                "jml_uptd": 18
+            },
+            {
+                "nama_uptd": "RSUD Kota Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan kepegawaian dan Pengembangan Sumber Daya Manuasia Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPT BBI Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan Pelaksana Otorita Borobudur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan Mutu Pelayanan Kesehatan Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Dinas Koperasi Usaha Kecil dan Menengah kabupaten Sleman",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Laboratorium Kesehatan Daerah",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "SMKN 6 Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Pemerintah Daetah Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BKPSDM Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Gunung Kidul (Purwosari)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Universitas Gadjah Mada",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "DPRD DI Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Gunung Kidul (Nglipar 1)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UIN Sunan Kalijaga Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BPJS Kesehatan Kota Yogyakarta",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSP Kabupaten Bantul (RSP Respira)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "BLUD Bapelkes Kabupaten Sleman, DIY",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSU PKU Muhammadiyah Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Kulon Progo",
+                "jml_uptd": 21
+            },
+            {
+                "nama_uptd": "RSPAU Kabupaten Bantul (Dr. S. Hardjolukito)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Sleman",
+                "jml_uptd": 27
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sleman",
+                "jml_uptd": 19
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Bantul",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Palang Merah Indonesia Kabupaten Sleman",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSPAU Kabupaten Bantul, DIY",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-sl",
+        "nama": "Sumatera Selatan",
+        "jml_mitra": 138,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Disperkim Provinsi Sumatera Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Bapelkes Dinas kesehatan Prov. Sumsel",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Gandus Palembang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSJP Bandung ",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Rupit Musi Rawas Utara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Dr. M. Yunus Kota Bengkulu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Badan Pengelola Kesejahteraan Kota Palembang",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Ogan Komering Ulu Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Kementerian Perhubungan Balai Pengelola KA Ringan Sumatera Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Muara Enim",
+                "jml_uptd": 24
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Muara Enim",
+                "jml_uptd": 6
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Ogan Komering Ilir (Kayu Agung)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Ogan Komering Ulu (Lubuk Batang)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kota Medan",
+                "jml_uptd": 53
+            },
+            {
+                "nama_uptd": "Puskesmas Kota Medan",
+                "jml_uptd": 41
+            },
+            {
+                "nama_uptd": "RS Kota Lubuklinggau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSKGM Kota Palembang, Sumatera Selatan",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Rumah Sakit Umum Daerah Kabupaten Lahat, Sumatera selatan",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-sr",
+        "nama": "Sulawesi Barat",
+        "jml_mitra": 37,
+        "jml_kota": 0,
+        "wilayah": 4,
+        "list_uptd": [
+            {
+                "nama_uptd": "UPT Puskesmas Kabupaten Pasangkayu (Bambalamotu)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Pasangkayu",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Majene",
+                "jml_uptd": 11
+            },
+            {
+                "nama_uptd": "RSUD Kabuapaten Majene",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kabupaten Polewali Mandar",
+                "jml_uptd": 20
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Polewali Mandar",
+                "jml_uptd": 3
+            }
+        ]
+    },
+    {
+        "id": "id-ja",
+        "nama": "Jambi",
+        "jml_mitra": 8,
+        "jml_kota": 0,
+        "wilayah": 2,
+        "list_uptd": [
+            {
+                "nama_uptd": "Dinas Pekerjaan Umum dan Perumahan Rakyat Provinsi Jambi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Nurdin Hamzah Kabupaten Jabung Timur",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Tebo (Sultan Thaha Saifuddin)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "UPTD Laboratorium Lingkungan Dinas Lingkungan Hidup Jambi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Pemerintah Provinsi Jambi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Bukit Kerman Kerinci",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Sarolangun, Jambi",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Batanghari",
+                "jml_uptd": 1
+            }
+        ]
+    },
+    {
+        "id": "id-kt",
+        "nama": "Kalimantan Tengah",
+        "jml_mitra": 26,
+        "jml_kota": 0,
+        "wilayah": 3,
+        "list_uptd": [
+            {
+                "nama_uptd": "Puksesmas Kabupaten Kotawaringin Barat (Semanggang)",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Sukamara Kabupaten Sukamara",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "RSUD Kabupaten Lamandau",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Kotawaringin Barat",
+                "jml_uptd": 18
+            },
+            {
+                "nama_uptd": "RSUD Kotawaringin Barat",
+                "jml_uptd": 3
+            },
+            {
+                "nama_uptd": "RSUD dr. Doris Sylvanus Kota Palangka Raya",
+                "jml_uptd": 1
+            },
+            {
+                "nama_uptd": "Puskesmas Semanggang Kabupaten Kotawaringin Barat ",
+                "jml_uptd": 1
+            }
+        ]
+    }
+]

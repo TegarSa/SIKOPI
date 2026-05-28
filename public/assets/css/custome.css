@@ -1,0 +1,120 @@
+.th-btn-w {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    vertical-align: middle;
+    display: inline-block;
+    border: none;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: var(--white-color);
+    color: var(--theme-color);
+    font-family: var(--body-font);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 20.5px 20px;
+    min-width: 144px;
+    border-radius: 4px;
+}
+
+.th-btn-w:before,
+.th-btn-w:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--title-color);
+    z-index: -1;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    border-radius: 99px;
+    -webkit-transform: scaleY(1.1);
+    -ms-transform: scaleY(1.1);
+    transform: scaleY(1.1);
+}
+
+.th-btn-w:before {
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+}
+
+.th-btn-w:after {
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+}
+
+.th-btn-w:hover,
+.th-btn-w.active {
+    color: var(--white-color);
+    box-shadow: none;
+}
+
+.th-btn-w:hover::before,
+.th-btn-w:hover:after,
+.th-btn-w.active::before,
+.th-btn-w.active:after {
+    border-radius: 0;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+
+.choose-wrapper:first-child {
+    padding: 60px 60px 30px 60px !important
+}
+
+.choose-wrapper {
+    padding: 30px 60px !important;
+    /* Large devices */
+    /* Medium devices */
+    /* Extra small devices */
+}
+
+.-mt-lg-5 {
+    padding-top: -15px !important;
+}
+
+
+.cart_table td {
+    /* border: none; */
+    /* border-bottom: 1px solid #f3f3f3; */
+    /* color: #8b8b8b; */
+    /* padding: 20px 10px; */
+    padding: 0 !important;
+    position: relative;
+    vertical-align: middle;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    padding: 2px 8px;
+    margin-bottom: 1rem;
+
+}
+
+.dropdown-menu {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border: none;
+    border-radius: 0;
+    padding: 0.7em;
+}
+
+
+.highcharts-credits {
+    display: none !important;
+}
+
+.breadcumb-wrappers {
+    background-color: rgba(145, 179, 250, 0.55);
+    padding: 160px 0;
+    overflow: hidden;
+    text-align: center;
+    background-size: contain;
+}
