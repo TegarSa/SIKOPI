@@ -3,7 +3,7 @@
         <div class="row text-muted">
             <div class="col-6 text-start">
                 <p class="mb-0">
-                    <a href="https://adminkit.io/" target="_blank" class="text-muted"><strong>Admin Konveksi</strong></a> &copy;
+                    <a href="#" target="_blank" class="text-muted"><strong>SIKOPI Sistem Koperasi Internal</strong></a> &copy;
                 </p>
             </div>
             <div class="col-6 text-end">

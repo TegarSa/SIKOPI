@@ -3,7 +3,7 @@
 @endsection
 @section('content')
    <div class="row">
-      <div class="col-lg-6 sisi-kiri" id="sticky-sidebar" style="background-color: #222E3C; min-height: 100vh;">
+      <div class="col-lg-6 sisi-kiri" id="sticky-sidebar" style="background-color: #1a232d; min-height: 100vh;">
          <div class="sticky-top">
             <div class="sisi-kiri2">
                <div class="row">
@@ -21,10 +21,10 @@
                               <div class="d-flex flex-column justify-content-center align-items-center py-5" style="min-height: 480px;">
                                  <img class="img-slider" src="{{ asset('/assets/img/1.png') }}">
                                  <h1 class="title-slider">
-                                    Go Beyond Style
+                                    Efisiensi Kerja Koperasi
                                  </h1>
                                  <p class="isi-slider">
-                                    Hadirkan pakaian berkualitas dengan proses produksi efisien melalui sistem SCM konveksi modern kami.
+                                    Kelola seluruh data simpan pinjam dan transaksi internal koperasi secara digital dalam satu platform terintegrasi.
                                  </p>
                               </div>
                            </div>
@@ -32,10 +32,10 @@
                               <div class="d-flex flex-column justify-content-center align-items-center py-5" style="min-height: 480px;">
                                  <img class="img-slider" src="{{ asset('/assets/img/2.png') }}">
                                  <h1 class="title-slider">
-                                    Kelola Produksi Tanpa Ribet
+                                    Verifikasi Cepat & Akurat
                                  </h1>
                                  <p class="isi-slider">
-                                    Pantau alur bahan, produksi, hingga distribusi dengan sistem SCM kami yang transparan dan mudah digunakan.
+                                    Memudahkan bendahara dan sekretaris dalam memvalidasi pengajuan anggota tanpa perlu birokrasi yang rumit.
                                  </p>
                               </div>
                            </div>
@@ -43,10 +43,10 @@
                               <div class="d-flex flex-column justify-content-center align-items-center py-5" style="min-height: 480px;">
                                  <img class="img-slider" src="{{ asset('/assets/img/3.png') }}">
                                  <h1 class="title-slider">
-                                    Kualitas & Tepat Waktu
+                                    Transparansi Keuangan
                                  </h1>
                                  <p class="isi-slider">
-                                    Pastikan setiap pakaian yang dihasilkan sesuai standar dan dikirim tepat waktu berkat integrasi SCM yang efektif.
+                                    Pantau laporan keuangan, perputaran kas, hingga pembagian SHU secara transparan, aman, dan akuntabel.
                                  </p>
                               </div>
                            </div>
@@ -84,8 +84,8 @@
                         <form action="{{ route('proses_login') }}" method="POST">
                            @csrf
                            <div class="form-group" style="margin-bottom: 16px;">
-                              <label class="label-form">Email*</label>
-                              <input type="email" class="form-control input-form" name="email" placeholder="Masukan email anda">
+                              <label class="label-form">Username*</label>
+                              <input type="text" class="form-control input-form" name="username" placeholder="Masukan username anda">
                            </div>
                            <div class="form-group" style="margin-top: 16px;">
                               <label class="label-form">Password*</label>

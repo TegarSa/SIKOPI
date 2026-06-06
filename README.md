@@ -1,136 +1,83 @@
 ## 🚀 Fitur & Modul Sistem
 
-Sistem **SCM Konveksi** dibangun dengan konsep *integrated modules*, di mana setiap modul saling terhubung dan berbagi data. Sistem ini dirancang untuk meminimalkan input manual, menjaga konsistensi data, serta merepresentasikan alur Supply Chain Management (SCM) pada usaha konveksi secara nyata.
+Sistem Informasi Koperasi Internal (**SIKOPI**) dibangun dengan konsep *integrated financial modules* dan pembagian hak akses (*Multi-Role Separation*) yang ketat antara Sekretaris dan Bendahara. Sistem ini dirancang untuk mengotomatisasi pencatatan buku kas utama, meminimalkan kesalahan manusia (*human error*), serta menjaga konsistensi saldo koperasi secara real-time.
 
 ---
 
-## 📦 Modul Inventory
+## 👥 Modul Keanggotaan
 
-Modul Inventory berfungsi sebagai pusat pengelolaan stok barang atau bahan baku konveksi.
+Modul Keanggotaan berfungsi sebagai pusat pengelolaan data master seluruh anggota koperasi yang menjadi fondasi utama transaksi simpan-pinjam.
 
-### Daftar Stok
-- Menampilkan jumlah stok aktual setiap barang
-- **Tidak menerima input manual**
-- Data stok dihitung otomatis berdasarkan:
-  - Transaksi stok masuk
-  - Transaksi stok keluar
-  - Purchase Order yang telah diproses
-- Bertujuan menjaga akurasi data stok secara real-time
-
-### Stok Masuk
-- Digunakan untuk mencatat barang yang masuk ke gudang
-- Data yang diinput meliputi:
-  - Barang
-  - Jumlah
-  - Tanggal masuk
-  - Referensi Purchase Order (opsional)
-- Terintegrasi dengan:
-  - Data barang
-  - Purchase Order
-- Setiap transaksi stok masuk akan **menambah jumlah stok secara otomatis**
-
-### Stok Keluar
-- Digunakan untuk mencatat barang yang keluar dari gudang
-- Data yang diinput meliputi:
-  - Barang
-  - Jumlah keluar
-  - Tujuan atau keterangan pengeluaran
-- Terhubung dengan modul Logistik
-- Setiap transaksi stok keluar akan **mengurangi stok secara otomatis**
+### Data Anggota (Tabel: `anggotas`)
+- Mengelola master data anggota (CRUD).
+- Mendukung fitur **Import CSV Anggota** untuk efisiensi input data dalam jumlah besar.
+- Menampilkan profil ringkas, nomor anggota, NIP, dan unit kerja yang terintegrasi otomatis di form transaksi.
 
 ---
 
-## 🛒 Modul Procurement
+## 💰 Modul Simpanan
 
-Modul Procurement mengelola proses pengadaan barang dari pemasok.
+Modul Simpanan mengelola dana masuk dari anggota dengan mekanisme verifikasi ganda untuk menjaga validitas kas.
 
-### Data Pemasok
-- Mengelola master data supplier
-- Informasi yang disimpan meliputi:
-  - Nama pemasok
-  - Alamat
-  - Kontak
-- Modul ini berdiri sendiri dan menjadi referensi utama untuk Purchase Order
+### Pengajuan Simpanan (Tabel: `simpanans`)
+- **Sekretaris:** Melakukan input data simpanan meliputi `anggota_id`, `jenis`, `jumlah`, `tgl_bayar`, dan `keterangan`.
+- Status awal simpanan yang diinput adalah `pending`.
 
-### Purchase Order (PO)
-- Digunakan untuk membuat dokumen pemesanan barang ke pemasok
-- Data yang diinput:
-  - Supplier
-  - Tanggal PO
-  - Daftar barang
-  - Quantity dan harga satuan
-- Terintegrasi dengan:
-  - Data pemasok
-  - Data barang
-- Purchase Order memiliki status (misalnya: draft, diproses, selesai)
-- PO yang selesai akan menjadi referensi untuk transaksi stok masuk
-
-### Riwayat Purchase Order
-- Menampilkan seluruh PO yang pernah dibuat
-- Data ditampilkan berdasarkan status PO
-- Tidak menerima input manual
-- Digunakan untuk monitoring dan evaluasi proses pengadaan
+### Verifikasi Simpanan
+- **Bendahara:** Memiliki otoritas penuh untuk melakukan *Approve* atau *Reject* terhadap pengajuan simpanan.
+- **Otomatisasi Sistem:** Saat Bendahara melakukan *Approve*, sistem secara otomatis akan:
+  - Mengubah `status_verifikasi` menjadi approved dan mencatat `verified_by`.
+  - Men-trigger pembuatan record baru pada Buku Kas Utama (`transaksis`) sebagai dana masuk.
 
 ---
 
-## 🏭 Modul Warehouse
+## 📈 Modul Pinjaman & Angsuran
 
-Modul Warehouse berfokus pada aktivitas gudang dan histori pergerakan barang.
+Modul Pinjaman mengadopsi aturan bisnis ketat (bunga flat dan batas tenor) di sisi backend serta otomatisasi pembuatan jadwal angsuran.
 
-### Pergerakan Stok
-- Mencatat seluruh aktivitas keluar dan masuk barang
-- Data berasal dari modul Inventory
-- Digunakan sebagai log mutasi stok
-- Memudahkan tracking histori pergerakan barang
+### Pengajuan Pinjaman (Tabel: `pinjaman`)
+- **Sekretaris:** Menginput pengajuan pinjaman (`anggota_id`, `jenis_pinjaman`, `jumlah_pinjaman`, `tenor_bulan`, `keterangan`).
+- **Aturan Bisnis Backend (Mutlak):**
+  - **Pinjaman Konsumtif:** Bunga flat 6%, maksimal tenor 36 bulan.
+  - **Pinjaman Darurat:** Bunga flat 2%, maksimal tenor 12 bulan.
+- **Validasi Ketat:** Anggota yang masih memiliki pinjaman aktif (`status` = approved & `sisa_pinjaman` > 0) tidak dapat mengajukan pinjaman baru.
 
-### Laporan Stok
-- Menyajikan laporan kondisi stok barang
-- Data diambil dari tabel mutasi stok
-- Tidak menerima input manual
-- Digunakan untuk kontrol persediaan dan pengambilan keputusan
+### Persetujuan & Otomatisasi Jadwal (Tabel: `angsuran`)
+- **Bendahara:** Memeriksa, menyetujui (*Approve*), atau menolak (*Reject*) pengajuan.
+- **Otomatisasi Sistem:** Saat Pinjaman di-*Approve*:
+  - Sistem otomatis menghitung `total_kewajiban` dan `angsuran_perbulan`.
+  - Sistem otomatis melakukan *looping* generate data jadwal angsuran pada tabel `angsuran` sebanyak `tenor_bulan` yang diajukan dengan status awal `pending`.
 
----
-
-## 🚚 Modul Logistik
-
-Modul Logistik menangani proses distribusi barang dari gudang ke tujuan.
-
-### Daftar Pengiriman
-- Digunakan untuk mencatat pengiriman barang
-- Data yang diinput:
-  - Barang
-  - Jumlah
-  - Tujuan pengiriman
-- Terintegrasi langsung dengan Inventory
-- Setiap pengiriman akan memicu transaksi stok keluar
-
-### Tracking Pengiriman
-- Digunakan untuk memperbarui status pengiriman
-- Contoh status:
-  - Diproses
-  - Dalam Pengiriman
-  - Diterima
-- Data diambil dari tabel pengiriman
-- Update status dilakukan tanpa membuat data baru
-
-### Riwayat Distribusi
-- Menampilkan histori seluruh aktivitas pengiriman
-- Tidak menerima input manual
-- Digunakan sebagai bahan monitoring dan audit distribusi
+### Pembayaran Angsuran (Tahap Berikutnya)
+- **Bendahara:** Mengeksekusi pembayaran angsuran anggota satu per satu.
+- **Otomatisasi Sistem:** Setiap kali angsuran dibayar:
+  - Mengubah status `angsuran` menjadi lunas.
+  - Mengurangi `sisa_pinjaman` pada tabel `pinjaman`.
+  - Jika `sisa_pinjaman` mencapai 0, otomatis mengubah status tabel `pinjaman` menjadi **Lunas**.
+  - Men-trigger pembuatan record baru pada Buku Kas Utama (`transaksis`) sebagai kas masuk.
 
 ---
 
-## 🔗 Konsep Integrasi Data
+## 📑 Modul Buku Kas Utama & Laporan (Tahap Berikutnya)
 
-Beberapa prinsip utama yang diterapkan dalam sistem ini:
+Modul ini berfungsi sebagai muara dari seluruh aktivitas finansial di dalam koperasi.
 
-- ❌ Tidak ada input stok secara manual
-- ✔ Stok dihitung berdasarkan transaksi
-- ✔ Modul saling terhubung dan bergantung satu sama lain
-- ✔ Mengurangi risiko data ganda dan kesalahan input
-- ✔ Merepresentasikan alur SCM dunia nyata pada usaha konveksi
+### Transaksi Utama (Tabel: `transaksis`)
+- Mencatat seluruh log keuangan (`anggota_id`, `jenis`, `kategori`, `reference_id`, `jumlah`, `saldo_setelah`).
+- **Tidak menerima input manual.** Data hanya terisi melalui trigger otomatis dari modul simpanan yang disetujui dan angsuran yang dibayar.
+- Menampilkan kalkulasi saldo akhir secara berkelanjutan (*running balance*).
 
-👥 Contributors
+---
+
+## 🔗 Konsep Integrasi Keuangan
+
+Beberapa prinsip utama yang diterapkan dalam sistem SIKOPI:
+
+- ❌ **Tidak ada manipulasi saldo manual:** Saldo kas bertambah atau berkurang murni berdasarkan aksi *approval* dan transaksi yang valid.
+- ✔ **Mekanisme Check & Balance:** Sekretaris bertindak sebagai *maker* (yang mengajukan), Bendahara bertindak sebagai *approver* (yang memverifikasi).
+- ✔ **Otomatisasi Pencatatan Jurnal:** Persetujuan pinjaman otomatis memecah kewajiban menjadi tenor bulanan tanpa perlu dihitung manual oleh pengurus.
+- ✔ **Keamanan Akses:** Seluruh endpoint dan *business logic* dilindungi oleh middleware `cek_login` dan dipisahkan secara rapi ke dalam namespace `Dashboard\Bendahara`.
+
+## 👥 Contributors
 Project ini dikembangkan secara kolaboratif oleh:
 - [**Tegar Satria**](https://github.com/TegarSa)
-- [**Satria Alukman**](https://github.com/SatriaAlukman)

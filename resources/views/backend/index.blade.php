@@ -1,242 +1,359 @@
 @php
-    use App\Models\Shipment;
-    use App\Models\StockMovement;
-    use App\Models\Supplier;
-    use App\Models\PurchaseOrder;
 
-    // 1. Pengiriman dalam perjalanan
-    $shipmentsOnDelivery = Shipment::where('status', 'on_delivery')->count();
+use App\Models\Anggota;
+use App\Models\Simpanan;
+use App\Models\Pinjaman;
+use App\Models\Transaksi;
 
-    // 2. Total stock barang (status = IN)
-    $totalStock = StockMovement::where('movement_type', 'IN')->sum('quantity');
+$totalAnggota = Anggota::count();
 
-    // 3. Total supplier aktif
-    $totalSuppliers = Supplier::count();
+$totalSimpanan = Simpanan::where(
+    'status_verifikasi',
+    'verified'
+)->sum('jumlah');
 
-    // 4. Purchase order berjalan (misal status = pending / in_progress)
-    $purchaseOrders = PurchaseOrder::count();
+$totalPinjamanAktif = Pinjaman::where(
+    'status',
+    'approved'
+)->count();
+
+$saldoKas = Transaksi::latest('id')
+    ->value('saldo_setelah') ?? 0;
+
+$totalKategoriSimpanan = Transaksi::where(
+    'kategori',
+    'simpanan'
+)->sum('jumlah');
+
+$totalKategoriPinjaman = Transaksi::where(
+    'kategori',
+    'pinjaman'
+)->sum('jumlah');
+
+$totalKategoriAngsuran = Transaksi::where(
+    'kategori',
+    'angsuran'
+)->sum('jumlah');
+
+$grafikBulanan = Transaksi::selectRaw("
+        MONTH(created_at) as bulan,
+        SUM(CASE WHEN jenis='masuk' THEN jumlah ELSE 0 END) as masuk,
+        SUM(CASE WHEN jenis='keluar' THEN jumlah ELSE 0 END) as keluar
+    ")
+    ->groupBy('bulan')
+    ->orderBy('bulan')
+    ->get();
+
+$transaksiTerbaru = Transaksi::with('anggota')
+    ->latest()
+    ->limit(5)
+    ->get();
+
 @endphp
+
 
 @extends('backend.layouts.index')
 
 @section('content')
-    <div class="container-fluid p-0">
+<div class="container-fluid p-0">
 
-        <div class="row mb-2 mb-xl-3">
-            <div class="col-auto d-none d-sm-block">
-                <h3><strong>Analytics</strong> Dashboard</h3>
-            </div>
-
-            <div class="col-auto ms-auto text-end mt-n1">
-                <a href="#" class="btn btn-light bg-white me-2">Invite a Friend</a>
-                <a href="#" class="btn btn-primary">New Project</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-6 col-xxl-5 d-flex">
-                <div class="w-100">
-                   <div class="row">
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col mt-0">
-                                            <h5 class="card-title">Pengiriman</h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="truck"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h1 class="mt-1 mb-3">{{ $shipmentsOnDelivery }}</h1>
-                                    <div class="mb-0">
-                                         <span class="badge badge-success-light">
-                                            <i class="mdi mdi-arrow-bottom-right"></i> +4.8%
-                                        </span>
-                                        <span class="text-muted">Dalam perjalanan</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col mt-0">
-                                            <h5 class="card-title">Stock Barang</h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="archive"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h1 class="mt-1 mb-3">{{ $totalStock }}</h1>
-                                    <div class="mb-0">
-                                        <span class="badge badge-success-light">
-                                            <i class="mdi mdi-arrow-bottom-right"></i> +5.2%
-                                        </span>
-                                        <span class="text-muted">Total stok barang</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col mt-0">
-                                            <h5 class="card-title">Supplier</h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="users"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h1 class="mt-1 mb-3">{{ $totalSuppliers }}</h1>
-                                    <div class="mb-0">
-                                        <span class="badge badge-danger-light">
-                                            <i class="mdi mdi-arrow-bottom-right"></i> -3.6%
-                                        </span>
-                                        <span class="text-muted">Supplier aktif</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col mt-0">
-                                            <h5 class="card-title">Purchase Orders</h5>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="stat text-primary">
-                                                <i class="align-middle" data-feather="shopping-cart"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h1 class="mt-1 mb-3">{{ $purchaseOrders }}</h1>
-                                    <div class="mb-0">
-                                        <span class="badge badge-danger-light">
-                                            <i class="mdi mdi-arrow-bottom-right"></i> -6.6%
-                                        </span>
-                                        <span class="text-muted">PO berjalan</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-xxl-7">
-                <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <div class="float-end">
-                            <form class="row g-2">
-                                <div class="col-auto">
-                                    <select class="form-select form-select-sm bg-light border-0">
-                                        <option>Jan</option>
-                                        <option value="1">Feb</option>
-                                        <option value="2">Mar</option>
-                                        <option value="3">Apr</option>
-                                    </select>
-                                </div>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control form-control-sm bg-light rounded-2 border-0"
-                                        style="width: 100px;" placeholder="Search..">
-                                </div>
-                            </form>
-                        </div>
-                        <h5 class="card-title mb-0">Recent Movement</h5>
-                    </div>
-                    <div class="card-body pt-2 pb-3">
-                        <div class="chart chart-sm">
-                            <canvas id="chartjs-dashboard-line"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row mb-2 mb-xl-3">
+        <div class="col-auto d-none d-sm-block">
+            <h3><strong>Dashboard</strong> SIKOPI</h3>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-3">
-                <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <div class="card-actions float-end">
-                            <div class="dropdown position-relative">
-                                <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-                                    <i class="align-middle" data-feather="more-horizontal"></i>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="card-title mb-0">Status Pengiriman</h5>
-                    </div>
-                    <div class="card-body d-flex">
-                        <div class="align-self-center w-100">
-                            <div class="py-3">
-                                <div class="chart chart-xs">
-                                    <canvas id="chartjs-dashboard-pie"></canvas>
-                                </div>
-                            </div>
-
-                            <table class="table mb-0">
-                                <tbody>
-                                    <tr>
-                                        <td><i class="fas fa-circle text-primary fa-fw"></i> Dalam Pengiriman <span
-                                                class="badge badge-success-light">+12%</span></td>
-                                        <td class="text-end">30</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fas fa-circle text-warning fa-fw"></i> Pending <span
-                                                class="badge badge-danger-light">-3%</span></td>
-                                        <td class="text-end">31</td>
-                                    </tr>
-                                    <tr>
-                                        <td><i class="fas fa-circle text-danger fa-fw"></i> Selesai </td>
-                                        <td class="text-end">19</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6 col-xxl-8 d-flex">
-                <div class="card flex-fill w-100">
-                    <div class="card-header">
-                        <div class="card-actions float-end">
-                            <div class="dropdown position-relative">
-                                <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-                                    <i class="align-middle" data-feather="more-horizontal"></i>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h5 class="card-title mb-0">Stok Barang Terlaris / Item Paling Banyak Keluar</h5>
-                    </div>
-                    <div class="card-body d-flex w-100">
-                        <div class="align-self-center chart chart-lg">
-                            <canvas id="chartjs-dashboard-bar"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-auto ms-auto text-end mt-n1">
+            <a href="#" class="btn btn-light bg-white me-2">Cetak PDF</a>
+            <a href="#" class="btn btn-primary">Export Excel</a>
         </div>
-
     </div>
+
+    <div class="row">
+       <div class="col-xl-6 col-xxl-5 d-flex">
+            <div class="w-100">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Total Anggota</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-primary">
+                                            <i class="align-middle" data-feather="users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3 fw-bold">{{ $totalAnggota }}</h1>
+                                <div class="mb-0">
+                                    <span class="badge bg-success-light text-success">
+                                        Aktif
+                                    </span>
+                                    <span class="text-muted text-nowrap">Terdaftar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Total Simpanan</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-success">
+                                            <i class="align-middle" data-feather="archive"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="mt-1 mb-3 fw-bold text-dark">
+                                    Rp {{ number_format($totalSimpanan, 0, ',', '.') }}
+                                </h4>
+                                <div class="mb-0">
+                                    <span class="badge bg-success-light text-success">
+                                        Verified
+                                    </span>
+                                    <span class="text-muted text-nowrap">Simpanan</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Pinjaman Aktif</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-warning">
+                                            <i class="align-middle" data-feather="credit-card"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h1 class="mt-1 mb-3 fw-bold">{{ $totalPinjamanAktif }}</h1>
+                                <div class="mb-0">
+                                    <span class="badge bg-warning-light text-warning">
+                                        Approved
+                                    </span>
+                                    <span class="text-muted text-nowrap">Berjalan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col mt-0">
+                                        <h5 class="card-title">Saldo Kas</h5>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat text-danger">
+                                            <i class="align-middle" data-feather="dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="mt-1 mb-3 fw-bold text-dark">
+                                    Rp {{ number_format($saldoKas, 0, ',', '.') }}
+                                </h4>
+                                <div class="mb-0">
+                                    <span class="badge bg-info-light text-info">
+                                        Realtime
+                                    </span>
+                                    <span class="text-muted text-nowrap">Kas Akhir</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-xxl-7 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Grafik Transaksi Bulanan</h5>
+                </div>
+                <div class="card-body py-1">
+                    <div class="chart chart-sm w-100">
+                        <canvas id="chartTransaksi"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-3">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Komposisi Transaksi</h5>
+                </div>
+                <div class="card-body d-flex">
+                    <div class="align-self-center w-100">
+                        <div class="py-3">
+                            <div class="chart chart-xs">
+                                <canvas id="chartPie"></canvas>
+                            </div>
+                        </div>
+
+                        <table class="table mb-0 mt-2">
+                            <tbody>
+                                <tr>
+                                    <td><i class="fas fa-circle text-primary fa-fw"></i> Simpanan</td>
+                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriSimpanan,0,',','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-circle text-warning fa-fw"></i> Pinjaman</td>
+                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriPinjaman,0,',','.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-circle text-danger fa-fw"></i> Angsuran</td>
+                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriAngsuran,0,',','.') }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xxl-8 d-flex">
+            <div class="card flex-fill w-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">5 Transaksi Terbaru</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover my-0">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Anggota</th>
+                                    <th class="d-none d-xl-table-cell">Kategori</th>
+                                    <th>Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($transaksiTerbaru as $item)
+                                <tr>
+                                    <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                    <td>
+                                        <div class="fw-semibold text-dark">{{ $item->anggota->nama ?? '-' }}</div>
+                                    </td>
+                                    <td class="d-none d-xl-table-cell">
+                                        @if($item->kategori == 'simpanan')
+                                            <span class="badge bg-success-light text-success">{{ ucfirst($item->kategori) }}</span>
+                                        @elseif($item->kategori == 'pinjaman')
+                                            <span class="badge bg-danger-light text-danger">{{ ucfirst($item->kategori) }}</span>
+                                        @else
+                                            <span class="badge bg-info-light text-info">{{ ucfirst($item->kategori) }}</span>
+                                        @endif
+                                    </td>
+                                    <td class="fw-bold text-dark">
+                                        Rp {{ number_format($item->jumlah,0,',','.') }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 @endsection
+
+@push('js')
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    new Chart(document.getElementById("chartTransaksi"), {
+        type: "line",
+        data: {
+            labels: [
+                @foreach($grafikBulanan as $item)
+                    "Bulan {{ $item->bulan }}",
+                @endforeach
+            ],
+            datasets: [
+                {
+                    label: "Dana Masuk",
+                    fill: true,
+                    backgroundColor: "rgba(59, 125, 221, 0.05)",
+                    borderColor: "#3b7ddd",
+                    data: [
+                        @foreach($grafikBulanan as $item)
+                            {{ $item->masuk }},
+                        @endforeach
+                    ]
+                },
+                {
+                    label: "Dana Keluar",
+                    fill: true,
+                    backgroundColor: "rgba(217, 83, 79, 0.05)",
+                    borderColor: "#d9534f",
+                    data: [
+                        @foreach($grafikBulanan as $item)
+                            {{ $item->keluar }},
+                        @endforeach
+                    ]
+                }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        borderDash: [3, 3]
+                    }
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById("chartPie"), {
+        type: "pie",
+        data: {
+            labels: ["Simpanan", "Pinjaman", "Angsuran"],
+            datasets: [{
+                data: [
+                    {{ $totalKategoriSimpanan }},
+                    {{ $totalKategoriPinjaman }},
+                    {{ $totalKategoriAngsuran }}
+                ],
+                backgroundColor: [
+                    "#3b7ddd",
+                    "#fcb92c",
+                    "#dc3545"
+                ],
+                borderWidth: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+});
+</script>
+@endpush

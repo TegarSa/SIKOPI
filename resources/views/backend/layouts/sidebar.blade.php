@@ -1,3 +1,22 @@
+<style>
+    .sidebar, 
+    .sidebar-content, 
+    .sidebar-link, 
+    a.sidebar-link {
+        background: #1a232d !important;
+    }
+    
+    .sidebar-link, 
+    a.sidebar-link {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+    
+    .sidebar-link:hover {
+        background: #24313f !important;
+        color: #fff !important;
+    }
+</style>
+
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
 
@@ -77,53 +96,131 @@
 
             <li class="sidebar-header">Pengelolaan</li>
 
+            {{-- ================= KOMISARIS ================= --}}
+            @if(auth()->user()->role === 'komisaris')
+
             <li class="sidebar-item">
-                <a data-bs-target="#pelatihan" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i data-feather="briefcase"></i>
-                    <span>Manajemen Persediaan</span>
+                <a href="{{ route('komisaris.anggota.index') }}" class="sidebar-link">
+                    <i data-feather="users"></i>
+                    <span>Anggota</span>
                 </a>
-                <ul id="pelatihan" class="sidebar-dropdown list-unstyled collapse">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('list') }}">Daftar Stok</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('stock.in.create') }}">Stok Masuk</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('products.index') }}">Data Barang</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('stock.out.create') }}">Stok Keluar</a></li>
-                </ul>
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#berita" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                <a href="{{ route('komisaris.simpanan.index') }}" class="sidebar-link">
                     <i data-feather="briefcase"></i>
-                    <span>Pengadaan / Pembelian</span>
+                    <span>Simpanan</span>
                 </a>
-                <ul id="berita" class="sidebar-dropdown list-unstyled collapse">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('supplier.index') }}">Data Pemasok</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('po.index') }}">Purchase Order (PO)</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#">Riwayat PO</a></li>
-                </ul>
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#unduh" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i data-feather="briefcase"></i>
-                    <span>Manajemen Gudang</span>
+                <a href="{{ route('komisaris.pinjaman.index') }}" class="sidebar-link">
+                    <i data-feather="file-text"></i>
+                    <span>Pinjaman</span>
                 </a>
-                <ul id="unduh" class="sidebar-dropdown list-unstyled collapse">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('report') }}">Laporan Stok Gudang</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('stock.movements.index') }}">Pergerakan Stok</a></li>
-                </ul>
             </li>
 
             <li class="sidebar-item">
-                <a data-bs-target="#profil" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                    <i data-feather="briefcase"></i>
-                    <span>Manajemen Logistik & Distribusi</span>
+                <a href="{{ route('komisaris.transaksi.index') }}" class="sidebar-link">
+                    <i data-feather="repeat"></i>
+                    <span>Transaksi</span>
                 </a>
-                <ul id="profil" class="sidebar-dropdown list-unstyled collapse">
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('shipments.index') }}">Daftar Pengiriman</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="{{ route('shipments.tracking') }}">Tracking Pengiriman</a></li>
-                    <!-- <li class="sidebar-item"><a class="sidebar-link" href="#">Riwayat Distribusi</a></li> -->
-                </ul>
             </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('komisaris.shu.index') }}" class="sidebar-link">
+                    <i data-feather="pie-chart"></i>
+                    <span>SHU</span>
+                </a>
+            </li>
+
+            @endif
+
+            {{-- ================= KETUA ================= --}}
+            @if(auth()->user()->role === 'ketua')
+
+            <li class="sidebar-item">
+                <a href="{{ route('ketua.pinjaman.index') }}" class="sidebar-link">
+                    <i data-feather="file-text"></i>
+                    <span>Pinjaman</span>
+                </a>
+            </li>
+
+            @endif
+
+            {{-- ================= SEKRETARIS ================= --}}
+            @if(auth()->user()->role === 'sekretaris')
+
+            <li class="sidebar-item">
+                <a href="{{ route('anggota.index') }}" class="sidebar-link">
+                    <i data-feather="users"></i>
+                    <span>Kelola Anggota</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('simpanan.index') }}" class="sidebar-link">
+                    <i data-feather="briefcase"></i>
+                    <span>Simpanan</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('pinjaman.index') }}" class="sidebar-link">
+                    <i data-feather="file-text"></i>
+                    <span>Pinjaman</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('transaksi.index') }}" class="sidebar-link">
+                    <i data-feather="credit-card"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+
+            @endif
+
+
+            {{-- ================= BENDAHARA ================= --}}
+            @if(auth()->user()->role === 'bendahara')
+
+            <li class="sidebar-item">
+                <a href="{{ route('bendahara.simpanan.index') }}" class="sidebar-link">
+                    <i data-feather="briefcase"></i>
+                    <span>Verifikasi Simpanan</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('bendahara.pinjaman.index') }}" class="sidebar-link">
+                    <i data-feather="file-text"></i>
+                    <span>Verifikasi Pinjaman</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('bendahara.transaksi.index') }}" class="sidebar-link">
+                    <i data-feather="repeat"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('bendahara.laporan.index') }}" class="sidebar-link">
+                    <i data-feather="trending-up"></i>
+                    <span>Laporan Keuangan</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route('shu.index') }}" class="sidebar-link">
+                    <i data-feather="pie-chart"></i>
+                    <span>SHU</span>
+                </a>
+            </li>
+
+            @endif
         </ul>
     </div>
 </nav>

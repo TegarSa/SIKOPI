@@ -2,86 +2,176 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    // Tampilkan daftar staff
+    /**
+     * Menampilkan daftar pengguna
+     */
     public function index()
     {
-        $staffs = User::where('role', 'staff')->get();
-        $totalStaffs = $staffs->count();
-        return view('backend.users.index', compact('staffs'));
+        $users = User::latest()->get();
+
+        return view('backend.users.index', compact('users'));
     }
 
-    // Tampilkan form tambah staff
+    /**
+     * Menampilkan form tambah pengguna
+     */
     public function create()
     {
         return view('backend.users.create');
     }
 
-    // Simpan staff baru
+    /**
+     * Menyimpan pengguna baru
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-            'institution' => 'nullable|string|max:255',
+            'name'          => 'required|string|max:255',
+            'username'      => 'required|string|max:255|unique:users,username',
+            'email'         => 'required|email|unique:users,email',
+            'password'      => 'required|string|min:6',
+            'role'          => 'required|in:admin,komisaris,ketua,sekretaris,bendahara',
+            'status'        => 'required|in:aktif,nonaktif',
+            'photo_profile' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $staff = new User();
-        $staff->name = $validated['name'];
-        $staff->email = $validated['email'];
-        $staff->password = Hash::make($validated['password']);
-        $staff->role = 'staff';
-        $staff->institution = $validated['institution'] ?? null;
-        $staff->save();
+        $photoName = null;
 
-        return redirect()->route('admin.users.index')->with('success', 'Staff berhasil ditambahkan');
-    }
+        if ($request->hasFile('photo_profile')) {
 
-    // Tampilkan form edit staff
-    public function edit($id)
-    {
-        $staff = User::where('role', 'staff')->findOrFail($id);
-        return view('backend.users.edit', compact('staff'));
-    }
+            $photoName = time() . '_' .
+                $request->file('photo_profile')->getClientOriginalName();
 
-    // Update data staff
-    public function update(Request $request, $id)
-    {
-        $staff = User::where('role', 'staff')->findOrFail($id);
-
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => "required|email|unique:users,email,{$staff->id}",
-            'password' => 'nullable|string|min:6',
-            'institution' => 'nullable|string|max:255',
-        ]);
-
-        $staff->name = $validated['name'];
-        $staff->email = $validated['email'];
-        $staff->institution = $validated['institution'] ?? null;
-
-        if ($request->filled('password')) {
-            $staff->password = Hash::make($validated['password']);
+            $request->file('photo_profile')->move(
+                public_path('assets/photo_profile'),
+                $photoName
+            );
         }
 
-        $staff->save();
+        User::create([
+            'name'          => $validated['name'],
+            'username' => $validated['username'],
+            'email'         => $validated['email'],
+            'password'      => Hash::make($validated['password']),
+            'role'          => $validated['role'],
+            'status'        => $validated['status'],
+            'photo_profile' => $photoName,
+        ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'Staff berhasil diupdate');
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil ditambahkan.');
     }
 
-    // Hapus staff
+    /**
+     * Menampilkan form edit pengguna
+     */
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('backend.users.edit', compact('user'));
+    }
+
+    /**
+     * Update pengguna
+     */
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'name'          => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+            'email'         => 'required|email|unique:users,email,' . $user->id,
+            'password'      => 'nullable|string|min:6',
+            'role' => 'required|in:admin,komisaris,ketua,sekretaris,bendahara',
+            'status'        => 'required|in:aktif,nonaktif',
+            'photo_profile' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        if ($request->hasFile('photo_profile')) {
+
+            if (
+                $user->photo_profile &&
+                file_exists(
+                    public_path(
+                        'assets/photo_profile/' .
+                        $user->photo_profile
+                    )
+                )
+            ) {
+                unlink(
+                    public_path(
+                        'assets/photo_profile/' .
+                        $user->photo_profile
+                    )
+                );
+            }
+
+            $photoName = time() . '_' .
+                $request->file('photo_profile')->getClientOriginalName();
+
+            $request->file('photo_profile')->move(
+                public_path('assets/photo_profile'),
+                $photoName
+            );
+
+            $user->photo_profile = $photoName;
+        }
+
+        $user->name = $validated['name'];
+        $user->username = $validated['username'];
+        $user->email = $validated['email'];
+        $user->role = $validated['role'];
+        $user->status = $validated['status'];
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($validated['password']);
+        }
+
+        $user->save();
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil diperbarui.');
+    }
+
+    /**
+     * Menghapus pengguna
+     */
     public function destroy($id)
     {
-        $staff = User::where('role', 'staff')->findOrFail($id);
-        $staff->delete();
+        $user = User::findOrFail($id);
 
-        return redirect()->route('admin.users.index')->with('success', 'Staff berhasil dihapus');
+        if (
+            $user->photo_profile &&
+            file_exists(
+                public_path(
+                    'assets/photo_profile/' .
+                    $user->photo_profile
+                )
+            )
+        ) {
+            unlink(
+                public_path(
+                    'assets/photo_profile/' .
+                    $user->photo_profile
+                )
+            );
+        }
+
+        $user->delete();
+
+        return redirect()
+            ->route('admin.users.index')
+            ->with('success', 'Pengguna berhasil dihapus.');
     }
 }

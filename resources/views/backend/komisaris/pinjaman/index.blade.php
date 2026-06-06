@@ -1,0 +1,255 @@
+@extends('backend.layouts.index')
+
+@section('content')
+<div class="container-fluid p-0">
+
+    <div class="mb-3">
+        <h1 class="h3 d-inline align-middle">Daftar Pinjaman</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <table id="datatables-pinjaman"
+                           class="table table-striped w-100">
+
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th>Anggota</th>
+                                <th>Jumlah Pinjaman</th>
+                                <th>Tenor</th>
+                                <th>Progress</th>
+                                <th>Angsuran/Bulan</th>
+                                <th>Status</th>
+                                <th>Tanggal Pengajuan</th>
+                                <th width="20%">Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach($pinjaman as $item)
+
+                                <tr>
+
+                                    <td>{{ $loop->iteration }}</td>
+
+                                    <td>
+                                        {{ $item->anggota->nama ?? '-' }}
+                                    </td>
+
+                                    <td>
+                                        Rp {{ number_format($item->jumlah_pinjaman, 0, ',', '.') }}
+                                    </td>
+
+                                    <td>
+                                        {{ $item->tenor_bulan }} Bulan
+                                    </td>
+
+                                    <td>
+
+                                        {{ $item->angsuran->where('status_verifikasi', 'verified')->count() }}
+                                        /
+                                        {{ $item->tenor_bulan }}
+
+                                    </td>
+
+                                    <td>
+                                        Rp {{ number_format($item->angsuran_perbulan, 0, ',', '.') }}
+                                    </td>
+
+                                    <td>
+
+                                        @if($item->status == 'pending')
+
+                                            <span class="badge bg-secondary">
+                                                Pending
+                                            </span>
+
+                                        @elseif($item->status == 'approved')
+
+                                            <span class="badge bg-success">
+                                                Approved
+                                            </span>
+
+                                        @elseif($item->status == 'aktif')
+
+                                            <span class="badge bg-primary">
+                                                Aktif
+                                            </span>
+
+                                        @elseif($item->status == 'lunas')
+
+                                            <span class="badge bg-info">
+                                                Lunas
+                                            </span>
+
+                                        @else
+
+                                            <span class="badge bg-danger">
+                                                Ditolak
+                                            </span>
+
+                                        @endif
+
+                                    </td>
+
+                                    <td>
+                                        {{ \Carbon\Carbon::parse($item->tgl_pengajuan)->format('d-m-Y') }}
+                                    </td>
+
+                                    <td>
+
+                                        @if($item->status == 'approved')
+
+                                        <a href="{{ route('komisaris.pinjaman.detail',$item->id) }}"
+                                        class="btn btn-info btn-sm">
+                                        <i class="fas fa-eye"></i>
+                                        </a>
+
+                                        
+                                            <span class="text-muted">
+                                                Terkunci
+                                            </span>
+
+                                        @endif
+
+                                    </td>
+
+                                </tr>
+
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mt-0">
+                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Total Pengajuan</h5>
+                        </div>
+                        <div class="col-auto">
+                            <div class="stat text-primary bg-primary-light p-2 rounded-circle">
+                                <i class="align-middle" data-feather="file-text"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="mt-1 mb-3 fw-bold text-dark">
+                        {{ $pinjaman->count() }}
+                    </h1>
+                    <div class="mb-0">
+                        <span class="badge bg-primary-light text-primary">Berkas</span>
+                        <span class="text-muted text-nowrap ms-1">Masuk Sistem</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mt-0">
+                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Pending</h5>
+                        </div>
+                        <div class="col-auto">
+                            <div class="stat text-warning bg-warning-light p-2 rounded-circle">
+                                <i class="align-middle" data-feather="clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="mt-1 mb-3 fw-bold text-dark">
+                        {{ $pinjaman->where('status','pending')->count() }}
+                    </h1>
+                    <div class="mb-0">
+                        <span class="badge bg-warning-light text-warning">Menunggu</span>
+                        <span class="text-muted text-nowrap ms-1">Review Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mt-0">
+                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Aktif</h5>
+                        </div>
+                        <div class="col-auto">
+                            <div class="stat text-info bg-info-light p-2 rounded-circle">
+                                <i class="align-middle" data-feather="activity"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="mt-1 mb-3 fw-bold text-dark">
+                        {{ $pinjaman->where('status','aktif')->count() }}
+                    </h1>
+                    <div class="mb-0">
+                        <span class="badge bg-info-light text-info">Berjalan</span>
+                        <span class="text-muted text-nowrap ms-1">Belum Lunas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 d-flex">
+            <div class="card flex-fill">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col mt-0">
+                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Lunas</h5>
+                        </div>
+                        <div class="col-auto">
+                            <div class="stat text-success bg-success-light p-2 rounded-circle">
+                                <i class="align-middle" data-feather="check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 class="mt-1 mb-3 fw-bold text-dark">
+                        {{ $pinjaman->where('status','lunas')->count() }}
+                    </h1>
+                    <div class="mb-0">
+                        <span class="badge bg-success-light text-success">Selesai</span>
+                        <span class="text-muted text-nowrap ms-1">Tanggung Jawab</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+@push('js')
+
+<script src="{{ asset('backend/js/datatables.js') }}"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    $("#datatables-pinjaman").DataTable({
+        responsive: true,
+        pageLength: 10
+    });
+
+});
+</script>
+
+@endpush

@@ -3,55 +3,51 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
+        $users = [
 
-        $user = [
             [
-                'name' => 'admin',
-                'email' => 'admin@virend.co.id',
-                'institution' => 'virend',
+                'name' => 'Admin',
+                'email' => 'admin@sikopi.com',
                 'role' => 'admin',
-                'password' => Hash::make('virend12345')
+                'password' => Hash::make('password'),
+                'status' => 'aktif',
             ],
 
             [
-                'name' => 'staff',
-                'email' => 'staff@virend.co.id',
-                'institution' => 'virend',
-                'role' => 'staff',
-                'password' => Hash::make('virend12345')
+                'name' => 'Sekretaris',
+                'email' => 'sekretaris@sikopi.com',
+                'role' => 'sekretaris',
+                'password' => Hash::make('password'),
+                'status' => 'aktif',
             ],
+
             [
-                'name' => 'manager',
-                'email' => 'manager@virend.co.id',
-                'institution' => 'virend',
-                'role' => 'manager',
-                'password' => Hash::make('virend12345')
+                'name' => 'Bendahara',
+                'email' => 'bendahara@sikopi.com',
+                'role' => 'bendahara',
+                'password' => Hash::make('password'),
+                'status' => 'aktif',
             ],
-            // [
-            //     'name' => 'user',
-            //     'email' => 'user@blud.co.id',
-            //     'phone' => '08170039080',
-            //     'institution' => 'syncore',
-            //     'level' => 'subscriber',
-            //     'password' => Hash::make('syncore12345')
-            // ],
+
+            [
+                'name' => 'Ketua',
+                'email' => 'ketua@sikopi.com',
+                'role' => 'ketua',
+                'password' => Hash::make('password'),
+                'status' => 'aktif',
+            ],
+
         ];
 
-        foreach ($user as $key => $value) {
-            User::create($value);
+        foreach ($users as $user) {
+            User::create($user);
         }
     }
 }

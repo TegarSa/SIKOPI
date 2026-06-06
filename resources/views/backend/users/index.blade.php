@@ -4,13 +4,14 @@
 <div class="container-fluid p-0">
 
     <div class="mb-3">
-        <h1 class="align-middle h3 d-inline">List Staff</h1>
+        <h1 class="align-middle h3 d-inline">Kelola Staff</h1>
     </div>
 
-    <!-- TABLE -->
+    <!-- TABLE USER -->
     <div class="row">
         <div class="col-12">
             <div class="card">
+
                 <div class="card-header text-end">
                     <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
                         Tambah Staff
@@ -18,51 +19,127 @@
                 </div>
 
                 <div class="card-body">
-                    <table id="datatables-staff" class="table table-striped w-100">
+
+                    <table id="datatables-users" class="table table-striped w-100">
+
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Photo</th>
-                                <th>Name</th>
+                                <th width="5%">No</th>
+                                <th width="10%">Foto</th>
+                                <th>Nama</th>
                                 <th>Email</th>
-                                <th>Institution</th>
-                                <th>Aksi</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th width="15%">Aksi</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            @foreach ($staffs as $staff)
+
+                            @foreach ($users as $user)
+
                                 <tr>
+
                                     <td>{{ $loop->iteration }}</td>
+
                                     <td>
-                                        <img src="{{ $staff->photo_profile
-                                            ? asset('assets/photo_profile/' . $staff->photo_profile)
-                                            : asset('assets/img/Default.jpeg') }}"
-                                            class="rounded" width="45">
+                                        <img
+                                            src="{{ $user->photo_profile
+                                                ? asset('assets/photo_profile/' . $user->photo_profile)
+                                                : asset('assets/img/Default.jpeg') }}"
+                                            class="rounded"
+                                            width="45"
+                                            height="45"
+                                            style="object-fit: cover;">
                                     </td>
-                                    <td>{{ $staff->name }}</td>
-                                    <td>{{ $staff->email }}</td>
-                                    <td>{{ $staff->institution }}</td>
+
+                                    <td>{{ $user->name }}</td>
+
+                                    <td>{{ $user->email }}</td>
+
                                     <td>
-                                        <a href="{{ route('admin.users.edit', $staff->id) }}"
-                                           class="btn btn-info btn-sm">
+                                        @switch($user->role)
+
+                                            @case('admin')
+                                                <span class="badge bg-danger">
+                                                    Admin
+                                                </span>
+                                            @break
+
+                                            @case('ketua')
+                                                <span class="badge bg-primary">
+                                                    Ketua
+                                                </span>
+                                            @break
+
+                                            @case('sekretaris')
+                                                <span class="badge bg-info">
+                                                    Sekretaris
+                                                </span>
+                                            @break
+
+                                            @case('bendahara')
+                                                <span class="badge bg-warning text-dark">
+                                                    Bendahara
+                                                </span>
+                                            @break
+
+                                            @default
+                                                <span class="badge bg-secondary">
+                                                    {{ $user->role }}
+                                                </span>
+
+                                        @endswitch
+                                    </td>
+
+                                    <td>
+                                        @if($user->status == 'aktif')
+                                            <span class="badge bg-success">
+                                                Aktif
+                                            </span>
+                                        @else
+                                            <span class="badge bg-danger">
+                                                Nonaktif
+                                            </span>
+                                        @endif
+                                    </td>
+
+                                    <td>
+
+                                        <a href="{{ route('admin.users.edit', $user->id) }}"
+                                            class="btn btn-info btn-sm">
                                             <i class="fas fa-pen"></i>
                                         </a>
 
-                                        <form action="{{ route('admin.users.destroy', $staff->id) }}"
-                                              method="POST" class="d-inline">
+                                        <form action="{{ route('admin.users.destroy', $user->id) }}"
+                                            method="POST"
+                                            class="d-inline">
+
                                             @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Yakin hapus staff ini?')">
+
+                                            <button
+                                                type="submit"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Yakin ingin menghapus pengguna ini?')">
+
                                                 <i class="fas fa-trash"></i>
+
                                             </button>
+
                                         </form>
+
                                     </td>
+
                                 </tr>
+
                             @endforeach
+
                         </tbody>
+
                     </table>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -87,7 +164,7 @@
                             </div>
                         </div>
 
-                        <h1 class="mt-1 mb-3">{{ $staffs->count() }}</h1>
+                        <h1 class="mt-1 mb-3">{{ $users->count() }}</h1>
 
                         <div class="mb-0">
                             <span class="badge badge-success-light">
@@ -150,18 +227,24 @@
         </div>
 
     </div>
+
+
 </div>
-
-
 @endsection
 
 @push('js')
+
 <script src="{{ asset('backend/js/datatables.js') }}"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    $("#datatables-staff").DataTable({
-        responsive: true
+
+    $("#datatables-users").DataTable({
+        responsive: true,
+        pageLength: 10
     });
+
 });
 </script>
+
 @endpush
