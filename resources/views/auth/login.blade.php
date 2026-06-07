@@ -62,7 +62,7 @@
             <div class="col-md-12 col-sm-6">
                <div class="d-flex flex-column justify-content-center align-items-start">
                   <a class="kembali-beranda" href="{{ url('/') }}">
-                      
+                     <i class="fa-solid fa-arrow-left-long"></i> Kembali Ke Beranda
                   </a>
                </div>
             </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\AnggotaController;
 use App\Http\Controllers\Dashboard\UserController;
@@ -16,9 +17,7 @@ use App\Http\Controllers\Dashboard\Bendahara\BendaharaSimpananController;
 use App\Http\Controllers\Dashboard\Bendahara\BendaharaPinjamanController;
 use App\Http\Controllers\Dashboard\Bendahara\BendaharaAngsuranController;
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
