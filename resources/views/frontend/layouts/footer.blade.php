@@ -5,7 +5,7 @@
             <div class="col-lg-4 col-md-12 text-start">
                 <div class="d-flex align-items-center mb-4 text-decoration-none" style="gap: 12px;">
                     <div class="d-flex align-items-center justify-content-center" style="width: 46px; height: 46px; overflow: hidden;">
-                        <img src="{{ asset('assets/img/logo 2.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="{{ asset('/assets/img/logo 2.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
                     </div> 
                     <div class="d-flex flex-column justify-content-center" style="line-height: 1;">
                         <span style="color: #fcfdfd; font-weight: 800; font-size: 1.6rem; letter-spacing: -0.5px; display: block;">SIKOPI</span>

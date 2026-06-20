@@ -15,8 +15,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-icon pe-md-0 dropdown-toggle" href="#" data-bs-toggle="dropdown">
                     <img src="{{ auth()->user()->photo_profile
-                            ? asset('assets/photo_profile/' . auth()->user()->photo_profile) 
-                            : asset('assets/img/Default.png') }}" class="rounded avatar img-fluid" alt="" />
+                            ? asset('/assets/photo_profile/' . auth()->user()->photo_profile) 
+                            : asset('/assets/img/Default.png') }}" class="rounded avatar img-fluid" alt="" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <div class="dropdown-divider"></div>

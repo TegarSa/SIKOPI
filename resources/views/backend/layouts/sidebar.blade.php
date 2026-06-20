@@ -38,8 +38,8 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-decoration-none" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="{{ auth()->user()->photo_profile
-                            ? asset('assets/photo_profile/' . auth()->user()->photo_profile) 
-                            : asset('assets/img/Default.png') }}" 
+                            ? asset('/assets/photo_profile/' . auth()->user()->photo_profile) 
+                            : asset('/assets/img/Default.png') }}" 
                     alt="User Avatar" 
                     class="rounded avatar img-fluid me-2">
                     <div class="text-start flex-fill">

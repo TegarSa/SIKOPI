@@ -11,11 +11,11 @@
         content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('/assets/img/logo.png') }}">
     <title>SIKOPI - Dashboard Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link class="stylesheet" href="{{ asset('backend/css/light.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('backend/css/custom.css') }}">
+    <link class="stylesheet" href="{{ asset('/backend/css/light.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/backend/css/custom.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -23,7 +23,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.2.1/css/froala_editor.pkgd.min.css"
         integrity="sha512-YSN2y6go6MkVkVnQlgAk3ilMbRzTnsrpL8yh8jY7GVidYajwWiPZ4khDcjJiDqrcc5MrolZNLIT+wVtzpUfKgg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="{{ asset('backend/js/settings.js') }}"></script>
+    <script src="{{ asset('/backend/js/settings.js') }}"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slim-select@latest/dist/slimselect.min.css">
     <script src="https://cdn.jsdelivr.net/npm/slim-select@latest/dist/slimselect.min.js"></script>
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('backend/js/app.js') }}"></script>
+    <script src="{{ asset('/backend/js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
         integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
