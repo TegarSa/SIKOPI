@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm m-0">
                                 <li><a class="dropdown-item fw-medium" href="#">Simpanan Anggota</a></li>
                                 <li><a class="dropdown-item fw-medium" href="#">Pengajuan Pinjaman</a></li>
-                                <li><a class="dropdown-item fw-medium" href="#">Angsuran & Buku Kas</a></li>
+                                <!-- <li><a class="dropdown-item fw-medium" href="#">Angsuran & Buku Kas</a></li> -->
                             </ul>
                         </li>
 
