@@ -25,6 +25,8 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['cek_login:admin,komisaris,sekretaris,bendahara,ketua'])->prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/export/pdf', [DashboardController::class, 'exportPdf'])->name('dashboard.export.pdf');
+    Route::get('/export/csv', [DashboardController::class, 'exportCsv'])->name('dashboard.export.csv');
 
     Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('profile.update');
@@ -50,7 +52,7 @@ Route::middleware(['cek_login:komisaris,ketua'])->prefix('dashboard/komisaris')-
     Route::get('/transaksi', [TransaksiController::class, 'komisarisIndex'])->name('komisaris.transaksi.index');
     Route::get('/shu', [ShuController::class, 'komisarisIndex'])->name('komisaris.shu.index');
     Route::get('/shu/{id}', [ShuController::class, 'komisarisShow'])->name('komisaris.shu.show');
-    
+
 });
 
 Route::middleware(['cek_login:ketua'])->prefix('dashboard/ketua')->group(function () {

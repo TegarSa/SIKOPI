@@ -1,57 +1,3 @@
-@php
-
-use App\Models\Anggota;
-use App\Models\Simpanan;
-use App\Models\Pinjaman;
-use App\Models\Transaksi;
-
-$totalAnggota = Anggota::count();
-
-$totalSimpanan = Simpanan::where(
-    'status_verifikasi',
-    'verified'
-)->sum('jumlah');
-
-$totalPinjamanAktif = Pinjaman::where(
-    'status',
-    'approved'
-)->count();
-
-$saldoKas = Transaksi::latest('id')
-    ->value('saldo_setelah') ?? 0;
-
-$totalKategoriSimpanan = Transaksi::where(
-    'kategori',
-    'simpanan'
-)->sum('jumlah');
-
-$totalKategoriPinjaman = Transaksi::where(
-    'kategori',
-    'pinjaman'
-)->sum('jumlah');
-
-$totalKategoriAngsuran = Transaksi::where(
-    'kategori',
-    'angsuran'
-)->sum('jumlah');
-
-$grafikBulanan = Transaksi::selectRaw("
-        MONTH(created_at) as bulan,
-        SUM(CASE WHEN jenis='masuk' THEN jumlah ELSE 0 END) as masuk,
-        SUM(CASE WHEN jenis='keluar' THEN jumlah ELSE 0 END) as keluar
-    ")
-    ->groupBy('bulan')
-    ->orderBy('bulan')
-    ->get();
-
-$transaksiTerbaru = Transaksi::with('anggota')
-    ->latest()
-    ->limit(5)
-    ->get();
-
-@endphp
-
-
 @extends('backend.layouts.index')
 
 @section('content')
@@ -63,8 +9,8 @@ $transaksiTerbaru = Transaksi::with('anggota')
         </div>
 
         <div class="col-auto ms-auto text-end mt-n1">
-            <a href="#" class="btn btn-light bg-white me-2">Cetak PDF</a>
-            <a href="#" class="btn btn-primary">Export Excel</a>
+            <a href="{{ route('dashboard.export.pdf') }}" class="btn btn-light bg-white me-2">Laporan Rekap Koperasi (PDF)</a>
+            <a href="{{ route('dashboard.export.csv') }}" class="btn btn-primary">Data Transaksi (CSV)</a>
         </div>
     </div>
 
@@ -72,6 +18,7 @@ $transaksiTerbaru = Transaksi::with('anggota')
        <div class="col-xl-6 col-xxl-5 d-flex">
             <div class="w-100">
                 <div class="row">
+
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
@@ -87,9 +34,7 @@ $transaksiTerbaru = Transaksi::with('anggota')
                                 </div>
                                 <h1 class="mt-1 mb-3 fw-bold">{{ $totalAnggota }}</h1>
                                 <div class="mb-0">
-                                    <span class="badge bg-success-light text-success">
-                                        Aktif
-                                    </span>
+                                    <span class="badge bg-success-light text-success">Aktif</span>
                                     <span class="text-muted text-nowrap">Terdaftar</span>
                                 </div>
                             </div>
@@ -111,16 +56,15 @@ $transaksiTerbaru = Transaksi::with('anggota')
                                     Rp {{ number_format($totalSimpanan, 0, ',', '.') }}
                                 </h4>
                                 <div class="mb-0">
-                                    <span class="badge bg-success-light text-success">
-                                        Verified
-                                    </span>
-                                    <span class="text-muted text-nowrap">Simpanan</span>
+                                    <span class="badge bg-success-light text-success">Verified</span>
+                                    <span class="text-muted text-nowrap">Data Tercatat</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-sm-6">
+
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
@@ -135,9 +79,7 @@ $transaksiTerbaru = Transaksi::with('anggota')
                                 </div>
                                 <h1 class="mt-1 mb-3 fw-bold">{{ $totalPinjamanAktif }}</h1>
                                 <div class="mb-0">
-                                    <span class="badge bg-warning-light text-warning">
-                                        Approved
-                                    </span>
+                                    <span class="badge bg-warning-light text-warning">Approved</span>
                                     <span class="text-muted text-nowrap">Berjalan</span>
                                 </div>
                             </div>
@@ -159,14 +101,14 @@ $transaksiTerbaru = Transaksi::with('anggota')
                                     Rp {{ number_format($saldoKas, 0, ',', '.') }}
                                 </h4>
                                 <div class="mb-0">
-                                    <span class="badge bg-info-light text-info">
-                                        Realtime
-                                    </span>
-                                    <span class="text-muted text-nowrap">Kas Akhir</span>
+                                    <span class="badge bg-info-light text-info">Sistem</span>
+                                    <span class="text-muted text-nowrap">Saldo Akhir</span>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -183,87 +125,103 @@ $transaksiTerbaru = Transaksi::with('anggota')
                 </div>
             </div>
         </div>
+
     </div>
 
     <div class="row">
-        <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-3">
-            <div class="card flex-fill w-100">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Komposisi Transaksi</h5>
-                </div>
-                <div class="card-body d-flex">
-                    <div class="align-self-center w-100">
-                        <div class="py-3">
-                            <div class="chart chart-xs">
-                                <canvas id="chartPie"></canvas>
-                            </div>
-                        </div>
 
-                        <table class="table mb-0 mt-2">
-                            <tbody>
-                                <tr>
-                                    <td><i class="fas fa-circle text-primary fa-fw"></i> Simpanan</td>
-                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriSimpanan,0,',','.') }}</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-circle text-warning fa-fw"></i> Pinjaman</td>
-                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriPinjaman,0,',','.') }}</td>
-                                </tr>
-                                <tr>
-                                    <td><i class="fas fa-circle text-danger fa-fw"></i> Angsuran</td>
-                                    <td class="text-end fw-bold text-muted">Rp {{ number_format($totalKategoriAngsuran,0,',','.') }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+    <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-3">
+        <div class="card flex-fill w-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Rekap Aktivitas Sistem</h5>
             </div>
-        </div>
+            <div class="card-body d-flex">
 
-        <div class="col-12 col-lg-6 col-xxl-8 d-flex">
-            <div class="card flex-fill w-100">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">5 Transaksi Terbaru</h5>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover my-0">
-                            <thead>
-                                <tr>
-                                    <th>Tanggal</th>
-                                    <th>Anggota</th>
-                                    <th class="d-none d-xl-table-cell">Kategori</th>
-                                    <th>Jumlah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($transaksiTerbaru as $item)
-                                <tr>
-                                    <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                                    <td>
-                                        <div class="fw-semibold text-dark">{{ $item->anggota->nama ?? '-' }}</div>
-                                    </td>
-                                    <td class="d-none d-xl-table-cell">
-                                        @if($item->kategori == 'simpanan')
-                                            <span class="badge bg-success-light text-success">{{ ucfirst($item->kategori) }}</span>
-                                        @elseif($item->kategori == 'pinjaman')
-                                            <span class="badge bg-danger-light text-danger">{{ ucfirst($item->kategori) }}</span>
-                                        @else
-                                            <span class="badge bg-info-light text-info">{{ ucfirst($item->kategori) }}</span>
-                                        @endif
-                                    </td>
-                                    <td class="fw-bold text-dark">
-                                        Rp {{ number_format($item->jumlah,0,',','.') }}
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="align-self-center w-100">
+                    <div class="py-2">
+                        <div class="chart chart-xs" style="max-height: 140px; margin: 0 auto;">
+                            <canvas id="chartPie"></canvas>
+                        </div>
                     </div>
+
+                    <table class="table mb-0 mt-2">
+                        <tbody>
+                            <tr>
+                                <td>Simpanan Tercatat</td>
+                                <td class="text-end fw-bold text-muted">
+                                    Rp {{ number_format($totalKategoriSimpanan,0,',','.') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Pinjaman Tercatat</td>
+                                <td class="text-end fw-bold text-muted">
+                                    Rp {{ number_format($totalKategoriPinjaman,0,',','.') }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Angsuran Tercatat</td>
+                                <td class="text-end fw-bold text-muted">
+                                    Rp {{ number_format($totalKategoriAngsuran,0,',','.') }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
+
             </div>
         </div>
     </div>
+
+    <div class="col-12 col-lg-6 col-xxl-8 d-flex">
+        <div class="card flex-fill w-100">
+            <div class="card-header">
+                <h5 class="card-title mb-0">5 Transaksi Terbaru</h5>
+            </div>
+            <div class="card-body p-0">
+
+                <div class="table-responsive">
+                    <table class="table table-hover my-0">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Pengguna</th>
+                                <th class="d-none d-xl-table-cell">Kategori</th>
+                                <th>Jumlah</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach($transaksiTerbaru as $item)
+                            <tr>
+                                <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                <td class="fw-semibold text-dark">
+                                    {{ $item->anggota->nama ?? '-' }}
+                                </td>
+                                <td class="d-none d-xl-table-cell">
+                                    @if($item->kategori == 'simpanan')
+                                        <span class="badge bg-success-light text-success">Simpanan</span>
+                                    @elseif($item->kategori == 'pinjaman')
+                                        <span class="badge bg-danger-light text-danger">Pinjaman</span>
+                                    @else
+                                        <span class="badge bg-info-light text-info">Angsuran</span>
+                                    @endif
+                                </td>
+                                <td class="fw-bold text-dark">
+                                    Rp {{ number_format($item->jumlah,0,',','.') }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 
 </div>
 @endsection
