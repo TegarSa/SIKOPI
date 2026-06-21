@@ -21,7 +21,7 @@
     <div class="sidebar-content js-simplebar">
 
      <div class="sidebar-header" style="position: relative; height: 70px;">
-            <a class="sidebar-brand d-block" href="#"
+            <a class="sidebar-brand d-block" href="{{ route('front.index') }}"
             style="position: absolute; 
                     top: -20px;
                     left: 6px;     
@@ -96,55 +96,53 @@
 
             <li class="sidebar-header">Pengelolaan</li>
 
-            {{-- ================= KOMISARIS ================= --}}
-            @if(auth()->user()->role === 'komisaris')
+            {{-- ================= MENU BERSAMA (KOMISARIS & KETUA) ================= --}}
+            @if(in_array(auth()->user()->role, ['komisaris', 'ketua']))
 
-            <li class="sidebar-item">
-                <a href="{{ route('komisaris.anggota.index') }}" class="sidebar-link">
-                    <i data-feather="users"></i>
-                    <span>Anggota</span>
-                </a>
-            </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('komisaris.anggota.index') }}" class="sidebar-link">
+                        <i data-feather="users"></i>
+                        <span>Anggota</span>
+                    </a>
+                </li>
 
-            <li class="sidebar-item">
-                <a href="{{ route('komisaris.simpanan.index') }}" class="sidebar-link">
-                    <i data-feather="briefcase"></i>
-                    <span>Simpanan</span>
-                </a>
-            </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('komisaris.simpanan.index') }}" class="sidebar-link">
+                        <i data-feather="briefcase"></i>
+                        <span>Simpanan</span>
+                    </a>
+                </li>
 
-            <li class="sidebar-item">
-                <a href="{{ route('komisaris.pinjaman.index') }}" class="sidebar-link">
-                    <i data-feather="file-text"></i>
-                    <span>Pinjaman</span>
-                </a>
-            </li>
+                {{-- PEMBEDA DI BAGIAN PINJAMAN --}}
+                @if(auth()->user()->role === 'ketua')
+                    <li class="sidebar-item">
+                        <a href="{{ route('ketua.pinjaman.index') }}" class="sidebar-link">
+                            <i data-feather="check-square"></i> 
+                            <span>Persetujuan Pinjaman</span> 
+                        </a>
+                    </li>
+                @else
+                    <li class="sidebar-item">
+                        <a href="{{ route('komisaris.pinjaman.index') }}" class="sidebar-link">
+                            <i data-feather="file-text"></i>
+                            <span>Data Pinjaman</span> 
+                        </a>
+                    </li>
+                @endif
 
-            <li class="sidebar-item">
-                <a href="{{ route('komisaris.transaksi.index') }}" class="sidebar-link">
-                    <i data-feather="repeat"></i>
-                    <span>Transaksi</span>
-                </a>
-            </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('komisaris.transaksi.index') }}" class="sidebar-link">
+                        <i data-feather="repeat"></i>
+                        <span>Transaksi</span>
+                    </a>
+                </li>
 
-            <li class="sidebar-item">
-                <a href="{{ route('komisaris.shu.index') }}" class="sidebar-link">
-                    <i data-feather="pie-chart"></i>
-                    <span>SHU</span>
-                </a>
-            </li>
-
-            @endif
-
-            {{-- ================= KETUA ================= --}}
-            @if(auth()->user()->role === 'ketua')
-
-            <li class="sidebar-item">
-                <a href="{{ route('ketua.pinjaman.index') }}" class="sidebar-link">
-                    <i data-feather="file-text"></i>
-                    <span>Pinjaman</span>
-                </a>
-            </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('komisaris.shu.index') }}" class="sidebar-link">
+                        <i data-feather="pie-chart"></i>
+                        <span>SHU</span>
+                    </a>
+                </li>
 
             @endif
 

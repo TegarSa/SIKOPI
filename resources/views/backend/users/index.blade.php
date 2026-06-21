@@ -84,6 +84,12 @@
                                                 </span>
                                             @break
 
+                                            @case('komisaris')
+                                                <span class="badge bg-dark">
+                                                    Komisaris
+                                                </span>
+                                            @break
+
                                             @default
                                                 <span class="badge bg-secondary">
                                                     {{ $user->role }}

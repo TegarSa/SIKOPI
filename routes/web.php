@@ -41,8 +41,8 @@ Route::middleware(['cek_login:admin'])->prefix('dashboard/admin')->group(functio
 
 });
 
-Route::middleware(['cek_login:komisaris'])->prefix('dashboard/komisaris')->group(function () {
-
+Route::middleware(['cek_login:komisaris,ketua'])->prefix('dashboard/komisaris')->group(function () {
+    
     Route::get('/anggota', [AnggotaController::class, 'komisarisIndex'])->name('komisaris.anggota.index');
     Route::get('/simpanan', [SimpananController::class, 'komisarisIndex'])->name('komisaris.simpanan.index');
     Route::get('/pinjaman', [PinjamanController::class, 'komisarisIndex'])->name('komisaris.pinjaman.index');
@@ -50,7 +50,7 @@ Route::middleware(['cek_login:komisaris'])->prefix('dashboard/komisaris')->group
     Route::get('/transaksi', [TransaksiController::class, 'komisarisIndex'])->name('komisaris.transaksi.index');
     Route::get('/shu', [ShuController::class, 'komisarisIndex'])->name('komisaris.shu.index');
     Route::get('/shu/{id}', [ShuController::class, 'komisarisShow'])->name('komisaris.shu.show');
-
+    
 });
 
 Route::middleware(['cek_login:ketua'])->prefix('dashboard/ketua')->group(function () {
