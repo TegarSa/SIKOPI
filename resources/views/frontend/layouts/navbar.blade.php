@@ -23,7 +23,7 @@
                 
                 <a class="navbar-brand d-flex align-items-center ps-4 m-0 text-decoration-none" href="#" style="min-height: 85px; gap: 12px;">
                     <div class="d-flex align-items-center justify-content-center" style="width: 52px; height: 52px; overflow: hidden;">
-                        <img src="{{ asset('assets/img/logo2.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="{{ asset('/assets/img/logo2.png') }}" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
                     </div> 
                     <div class="d-flex flex-column justify-content-center" style="line-height: 1;">
                         <span style="color: #162224; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px; display: block;">SIKOPI</span>
