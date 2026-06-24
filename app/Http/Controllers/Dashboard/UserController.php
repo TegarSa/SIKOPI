@@ -46,13 +46,16 @@ class UserController extends Controller
 
         if ($request->hasFile('photo_profile')) {
 
-            $photoName = time() . '_' .
-                $request->file('photo_profile')->getClientOriginalName();
+            $file = $request->file('photo_profile');
+            $photoName = time() . '_' . $file->getClientOriginalName();
 
-            $request->file('photo_profile')->move(
-                public_path('assets/photo_profile'),
-                $photoName
-            );
+            $destination = $_SERVER['DOCUMENT_ROOT'] . '/assets/photo_profile';
+
+            if (!file_exists($destination)) {
+                mkdir($destination, 0775, true);
+            }
+
+            $file->move($destination, $photoName);
         }
 
         User::create([
@@ -99,33 +102,26 @@ class UserController extends Controller
 
         if ($request->hasFile('photo_profile')) {
 
-            if (
-                $user->photo_profile &&
-                file_exists(
-                    public_path(
-                        'assets/photo_profile/' .
-                        $user->photo_profile
-                    )
-                )
-            ) {
-                unlink(
-                    public_path(
-                        'assets/photo_profile/' .
-                        $user->photo_profile
-                    )
-                );
+            $file = $request->file('photo_profile');
+            $photoName = time() . '_' . $file->getClientOriginalName();
+
+            $destination = $_SERVER['DOCUMENT_ROOT'] . '/assets/photo_profile';
+
+            if (!file_exists($destination)) {
+                mkdir($destination, 0775, true);
             }
 
-            $photoName = time() . '_' .
-                $request->file('photo_profile')->getClientOriginalName();
+            // delete old file
+            if ($user->photo_profile && file_exists($destination . '/' . $user->photo_profile)) {
+                unlink($destination . '/' . $user->photo_profile);
+            }
 
-            $request->file('photo_profile')->move(
-                public_path('assets/photo_profile'),
-                $photoName
-            );
+            // move file
+            $file->move($destination, $photoName);
 
             $user->photo_profile = $photoName;
         }
+
 
         $user->name = $validated['name'];
         $user->username = $validated['username'];
