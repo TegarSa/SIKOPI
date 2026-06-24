@@ -37,14 +37,22 @@ class DashboardController extends Controller
         $totalKategoriAngsuran = Transaksi::where('kategori', 'angsuran')
             ->sum('jumlah');
 
-        $grafikBulanan = Transaksi::selectRaw("
+        $dataSistem = Transaksi::selectRaw("
                 MONTH(created_at) as bulan,
                 SUM(CASE WHEN jenis='masuk' THEN jumlah ELSE 0 END) as masuk,
                 SUM(CASE WHEN jenis='keluar' THEN jumlah ELSE 0 END) as keluar
             ")
             ->groupBy('bulan')
-            ->orderBy('bulan')
-            ->get();
+            ->get()
+            ->keyBy('bulan'); 
+
+        $grafikBulanan = collect(range(1, 12))->map(function ($bulan) use ($dataSistem) {
+            return (object) [
+                'bulan' => $bulan,
+                'masuk' => $dataSistem->has($bulan) ? $dataSistem[$bulan]->masuk : 0,
+                'keluar' => $dataSistem->has($bulan) ? $dataSistem[$bulan]->keluar : 0,
+            ];
+        });
 
         $transaksiTerbaru = Transaksi::with('anggota')
             ->latest()

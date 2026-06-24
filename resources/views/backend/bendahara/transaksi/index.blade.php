@@ -9,7 +9,7 @@
 
     <div class="row mb-3">
         <div class="col-md-4 d-flex">
-            <div class="card flex-fill">
+            <div class="card flex-fill mb-0">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-md-4 d-flex">
-            <div class="card flex-fill">
+            <div class="card flex-fill mb-0">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="col-md-4 d-flex">
-            <div class="card flex-fill">
+            <div class="card flex-fill mb-0">
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
@@ -90,43 +90,38 @@
 
         <div class="card-body">
 
-            <table class="table table-striped w-100" id="datatables-transaksi">
-
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Anggota</th>
-                        <th>Kategori</th>
-                        <th>Jenis</th>
-                        <th>Jumlah</th>
-                        <th>Keterangan</th>
-                        <th>Tanggal</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    @foreach($transaksi as $t)
-
+            <div class="table-responsive">
+                <table class="table table-striped w-100" id="datatables-transaksi">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $t->anggota->nama ?? '-' }}</td>
-                            <td>{{ ucfirst($t->kategori) }}</td>
-                            <td>
-                                <span class="badge bg-{{ $t->jenis == 'masuk' ? 'success' : 'danger' }}">
-                                    {{ $t->jenis }}
-                                </span>
-                            </td>
-                            <td>Rp {{ number_format($t->jumlah, 0, ',', '.') }}</td>
-                            <td>{{ $t->keterangan }}</td>
-                            <td>{{ $t->created_at->format('d-m-Y') }}</td>
+                            <th>No</th>
+                            <th>Anggota</th>
+                            <th>Kategori</th>
+                            <th>Jenis</th>
+                            <th>Jumlah</th>
+                            <th>Keterangan</th>
+                            <th>Tanggal</th>
                         </tr>
-
-                    @endforeach
-
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($transaksi as $t)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $t->anggota->nama ?? '-' }}</td>
+                                <td>{{ ucfirst($t->kategori) }}</td>
+                                <td>
+                                    <span class="badge bg-{{ $t->jenis == 'masuk' ? 'success' : 'danger' }}">
+                                        {{ $t->jenis }}
+                                    </span>
+                                </td>
+                                <td>Rp {{ number_format($t->jumlah, 0, ',', '.') }}</td>
+                                <td>{{ $t->keterangan }}</td>
+                                <td>{{ $t->created_at->format('d-m-Y') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
@@ -180,12 +175,19 @@ document.addEventListener("DOMContentLoaded", function () {
         pageLength: 10
     });
 
+    // Array pembantu nama bulan Indonesia
+    const namaBulanIndo = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
     const cashflowCtx = document.getElementById('cashflowChart');
 
     new Chart(cashflowCtx, {
         type: 'line',
         data: {
-            labels: {!! json_encode($summary['per_bulan']->pluck('bulan')) !!},
+            labels: [
+                @foreach($summary['per_bulan'] as $item)
+                    namaBulanIndo[{{ $item->bulan }}],
+                @endforeach
+            ],
             datasets: [
                 {
                     label: 'Masuk',

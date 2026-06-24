@@ -1,7 +1,7 @@
 <div class="hero-slider-wrapper">
     
     <div class="hero-slide active">
-        <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920');"></div>
+        <div class="hero-bg-img" style="background-image: url('https://inspektorat.jogjakota.go.id/assets/instansi/inspektorat/header-bg20190227111559.jpg');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content-container">
             <div class="container">
@@ -17,7 +17,7 @@
     </div>
 
     <div class="hero-slide">
-        <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1920');"></div>
+        <div class="hero-bg-img" style="background-image: url('https://inspektorat.jogjakota.go.id/assets/instansi/inspektorat/gallery/20241224081021_WhatsApp+Image+2024-12-23+at+16.54_.24_.jpeg');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content-container">
             <div class="container">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="hero-slide">
-        <div class="hero-bg-img" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1920');"></div>
+        <div class="hero-bg-img" style="background-image: url('https://s3images.coroflot.com/user_files/individual_files/703851_qsbbnbztsk6w96cpvrsmgeir3.jpg');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content-container">
             <div class="container">

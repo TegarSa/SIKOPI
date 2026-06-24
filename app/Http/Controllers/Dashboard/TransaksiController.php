@@ -54,14 +54,22 @@ class TransaksiController extends Controller
             ->groupBy('kategori')
             ->get();
 
-        $perBulan = Transaksi::selectRaw("
+        $dataSistem = Transaksi::selectRaw("
                 MONTH(created_at) as bulan,
                 SUM(CASE WHEN jenis='masuk' THEN jumlah ELSE 0 END) as masuk,
                 SUM(CASE WHEN jenis='keluar' THEN jumlah ELSE 0 END) as keluar
             ")
             ->groupBy('bulan')
-            ->orderBy('bulan')
-            ->get();
+            ->get()
+            ->keyBy('bulan');
+
+        $perBulan = collect(range(1, 12))->map(function ($bulan) use ($dataSistem) {
+            return (object) [
+                'bulan' => $bulan,
+                'masuk' => $dataSistem->has($bulan) ? $dataSistem[$bulan]->masuk : 0,
+                'keluar' => $dataSistem->has($bulan) ? $dataSistem[$bulan]->keluar : 0,
+            ];
+        });
 
         return [
             'total_masuk' => $totalMasuk,
