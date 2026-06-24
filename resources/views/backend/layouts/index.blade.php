@@ -12,6 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
     <title>SIKOPI - Dashboard Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link class="stylesheet" href="{{ asset('backend/css/light.css') }}" rel="stylesheet">
