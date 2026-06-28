@@ -54,11 +54,11 @@
                     <ul class="navbar-nav ms-auto d-flex flex-row align-items-center px-4 mb-0">
 
                         <li class="nav-item">
-                            <a class="nav-link px-3 fw-semibold text-dark" href="#">Beranda</a>
+                            <a class="nav-link px-3 fw-semibold text-dark" href="{{ route('front.index') }}">Beranda</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link px-3 fw-semibold text-dark" href="#">Tentang Kami</a>
+                            <a class="nav-link px-3 fw-semibold text-dark" href="{{ route('about') }}">Tentang Kami</a>
                         </li>
 
                         <li class="nav-item dropdown custom-dropdown">

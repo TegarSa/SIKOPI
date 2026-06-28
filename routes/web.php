@@ -18,6 +18,7 @@ use App\Http\Controllers\Dashboard\Bendahara\BendaharaPinjamanController;
 use App\Http\Controllers\Dashboard\Bendahara\BendaharaAngsuranController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/about', [FrontController::class, 'about'])->name('about');
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');

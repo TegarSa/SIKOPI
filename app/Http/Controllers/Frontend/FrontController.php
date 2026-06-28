@@ -19,4 +19,9 @@ class FrontController extends Controller
 
         return view('frontend.homepage', compact('totalAnggota', 'totalKas', 'totalKategori')); 
     }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
 }

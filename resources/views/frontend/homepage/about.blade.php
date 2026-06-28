@@ -17,7 +17,7 @@
                         Dengan komitmen penuh terhadap kesejahteraan anggota internal, kami memastikan setiap transaksi simpanan, pengajuan pinjaman, hingga laporan operasional berjalan dengan tingkat akurasi tinggi dan real-time.
                     </p>
                     <div>
-                        <a href="#" class="btn btn-danger px-4 py-3 fw-bold" style="background-color: #856053; border: none; font-size: 14px; border-radius: 4px; transition: background-color 0.2s;">
+                        <a href="{{ route('about') }}" class="btn btn-danger px-4 py-3 fw-bold" style="background-color: #856053; border: none; font-size: 14px; border-radius: 4px; transition: background-color 0.2s;">
                             Pelajari Selengkapnya
                         </a>
                     </div>
