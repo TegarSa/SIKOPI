@@ -25,6 +25,7 @@ class PinjamanController extends Controller
         return view('backend.pinjaman.create', compact('anggotas'));
     }
 
+    // Logika pembuatan pengajuan pinjaman
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -35,20 +36,24 @@ class PinjamanController extends Controller
             'keterangan'        => 'nullable|string',
         ]);
 
-        // Atur aturan batas maksimal tenor dan rate bunga secara mutlak di backend
+        // Menentukan bunga tahunan dan batas maksimal tenor sesuai jenis pinjaman
         if ($validated['jenis_pinjaman'] === 'konsumtif') {
-            $bunga = 6;
+            $bungaTahunan = 6;   // 0,5% per bulan = 6% per tahun
             $maxTenor = 36;
         } else {
-            $bunga = 2;
+            $bungaTahunan = 24;  // 2% per bulan = 24% per tahun
             $maxTenor = 12;
         }
 
-        // Validasi batasan tenor sesuai aturan jenis pinjaman
+        // Validasi maksimal tenor
         if ($validated['tenor_bulan'] > $maxTenor) {
-            return redirect()->back()->withInput()->with('error', "Tenor maksimal untuk pinjaman {$validated['jenis_pinjaman']} adalah {$maxTenor} bulan.");
+            return redirect()->back()->withInput()->with(
+                'error',
+                "Tenor maksimal untuk pinjaman {$validated['jenis_pinjaman']} adalah {$maxTenor} bulan."
+            );
         }
 
+        // Cek apakah anggota masih memiliki pinjaman aktif
         $pinjamanAktif = Pinjaman::where('anggota_id', $validated['anggota_id'])
             ->where('status', 'approved')
             ->where('sisa_pinjaman', '>', 0)
@@ -59,11 +64,15 @@ class PinjamanController extends Controller
         }
 
         $jumlahPinjaman = $validated['jumlah_pinjaman'];
-        $tenor          = $validated['tenor_bulan'];
+        $tenor = $validated['tenor_bulan'];
 
-        // Rumus bunga flat tahunan/periodik sesuai code awal kamu
-        $totalBunga = ($jumlahPinjaman * $bunga / 100) * ($tenor / 12);
+        // Menghitung bunga berdasarkan bunga tahunan
+        $totalBunga = ($jumlahPinjaman * $bungaTahunan / 100) * ($tenor / 12);
+
+        // Menghitung total yang harus dibayar
         $totalKewajiban = $jumlahPinjaman + $totalBunga;
+
+        // Menghitung angsuran setiap bulan
         $angsuranPerbulan = $totalKewajiban / $tenor;
 
         Pinjaman::create([
@@ -71,7 +80,7 @@ class PinjamanController extends Controller
             'jenis_pinjaman'     => $validated['jenis_pinjaman'],
             'jumlah_pinjaman'    => $jumlahPinjaman,
             'tenor_bulan'        => $tenor,
-            'bunga_flat'         => $bunga, // Otomatis tersimpan 6 atau 2
+            'bunga_flat'         => $bungaTahunan, // Disimpan sebagai bunga tahunan (6% atau 24%)
             'total_kewajiban'    => $totalKewajiban,
             'angsuran_perbulan'  => $angsuranPerbulan,
             'sisa_pinjaman'      => $totalKewajiban,
@@ -92,6 +101,7 @@ class PinjamanController extends Controller
         return view('backend.pinjaman.edit', compact('pinjaman', 'anggotas'));
     }
 
+    // Logika perubahan data pinjaman
     public function update(Request $request, $id)
     {
         $pinjaman = Pinjaman::findOrFail($id);
@@ -104,18 +114,24 @@ class PinjamanController extends Controller
             'keterangan'        => 'nullable|string',
         ]);
 
+        // Menentukan bunga tahunan dan batas maksimal tenor sesuai jenis pinjaman
         if ($validated['jenis_pinjaman'] === 'konsumtif') {
-            $bunga = 6;
+            $bungaTahunan = 6;   // 0,5% per bulan = 6% per tahun
             $maxTenor = 36;
         } else {
-            $bunga = 2;
+            $bungaTahunan = 24;  // 2% per bulan = 24% per tahun
             $maxTenor = 12;
         }
 
+        // Validasi maksimal tenor
         if ($validated['tenor_bulan'] > $maxTenor) {
-            return redirect()->back()->withInput()->with('error', "Tenor maksimal untuk pinjaman {$validated['jenis_pinjaman']} adalah {$maxTenor} bulan.");
+            return redirect()->back()->withInput()->with(
+                'error',
+                "Tenor maksimal untuk pinjaman {$validated['jenis_pinjaman']} adalah {$maxTenor} bulan."
+            );
         }
 
+        // Cek apakah anggota masih memiliki pinjaman aktif selain data yang sedang diedit
         $pinjamanAktif = Pinjaman::where('anggota_id', $validated['anggota_id'])
             ->where('status', 'approved')
             ->where('sisa_pinjaman', '>', 0)
@@ -127,10 +143,15 @@ class PinjamanController extends Controller
         }
 
         $jumlahPinjaman = $validated['jumlah_pinjaman'];
-        $tenor          = $validated['tenor_bulan'];
+        $tenor = $validated['tenor_bulan'];
 
-        $totalBunga = ($jumlahPinjaman * $bunga / 100) * ($tenor / 12);
+        // Menghitung bunga berdasarkan bunga tahunan
+        $totalBunga = ($jumlahPinjaman * $bungaTahunan / 100) * ($tenor / 12);
+
+        // Menghitung total yang harus dibayar
         $totalKewajiban = $jumlahPinjaman + $totalBunga;
+
+        // Menghitung angsuran setiap bulan
         $angsuranPerbulan = $totalKewajiban / $tenor;
 
         $pinjaman->update([
@@ -138,7 +159,7 @@ class PinjamanController extends Controller
             'jenis_pinjaman'     => $validated['jenis_pinjaman'],
             'jumlah_pinjaman'    => $jumlahPinjaman,
             'tenor_bulan'        => $tenor,
-            'bunga_flat'         => $bunga,
+            'bunga_flat'         => $bungaTahunan, // Disimpan sebagai bunga tahunan (6% atau 24%)
             'total_kewajiban'    => $totalKewajiban,
             'angsuran_perbulan'  => $angsuranPerbulan,
             'sisa_pinjaman'      => $totalKewajiban,
