@@ -85,7 +85,7 @@
                             <div class="col-sm-10">
                                 <select name="jenis_pinjaman" id="jenis_pinjaman" class="form-select" required>
                                     <option value="konsumtif" selected>Pinjaman Konsumtif (Bunga 6%, Max 36 Bulan)</option>
-                                    <option value="darurat">Pinjaman Darurat (Bunga 2%, Max 12 Bulan)</option>
+                                    <option value="darurat">Pinjaman Darurat (Bunga 24%, Max 12 Bulan)</option>
                                 </select>
                             </div>
                         </div>
