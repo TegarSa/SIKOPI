@@ -133,6 +133,15 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
     <script>
+        @auth
+            if (!sessionStorage.getItem('tab_session_active')) {
+                window.location.href = "{{ route('logout') }}";
+            }
+        @endauth
+        sessionStorage.setItem('tab_session_active', 'true');
+    </script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             if (typeof feather !== 'undefined') {
                 feather.replace();

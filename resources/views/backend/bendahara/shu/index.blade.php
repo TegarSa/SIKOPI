@@ -22,7 +22,7 @@
                     <tr>
                         <th>No</th>
                         <th>Periode</th>
-                        <th>Total Laba</th>
+                        <th>Volume Transaksi Diolah</th>
                         <th>% SHU</th>
                         <th>Total Dibagikan</th>
                         <th>Dibuat</th>

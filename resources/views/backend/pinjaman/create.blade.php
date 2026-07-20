@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tenorBulan.value = Math.min(tenorBulan.value, 36); 
             tenorInfo.textContent = "Maksimal pengajuan: 36 bulan.";
         } else if (this.value === 'darurat') {
-            bungaFlat.value = 2;
+            bungaFlat.value = 24;
             tenorBulan.max = 12;
             // Jika tenor saat ini melebihi 12, turunkan otomatis ke 12
             tenorBulan.value = Math.min(tenorBulan.value, 12); 
