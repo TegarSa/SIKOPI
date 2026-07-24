@@ -1,4 +1,7 @@
 @extends('frontend.layouts.index')
+
+@section('title', 'Beranda - Sistem Informasi Koperasi SIKOPI')
+
 @section('content')
     @include('frontend.homepage.index')
     @include('frontend.homepage.about')

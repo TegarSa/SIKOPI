@@ -70,8 +70,8 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm m-0">
-                                <li><a class="dropdown-item fw-medium" href="#">Simpanan Anggota</a></li>
-                                <li><a class="dropdown-item fw-medium" href="#">Pengajuan Pinjaman</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('services2') }}">Simpanan Anggota</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('services') }}">Pengajuan Pinjaman</a></li>
                             </ul>
                         </li>
 
@@ -84,15 +84,15 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm m-0">
-                                <li><a class="dropdown-item fw-medium" href="#">Formulir Keanggotaan Baru</a></li>
-                                <li><a class="dropdown-item fw-medium" href="#">Syarat & Kuasa Potong Gaji</a></li>
-                                <li><a class="dropdown-item fw-medium" href="#">Berkas Pengajuan Pinjaman</a></li>
-                                <li><a class="dropdown-item fw-medium" href="#">Format Surat Pengunduran Diri</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('downloads.keanggotaan') }}">Formulir Keanggotaan Baru</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('downloads.potong-gaji') }}">Syarat & Kuasa Potong Gaji</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('downloads.pinjaman') }}">Berkas Pengajuan Pinjaman</a></li>
+                                <li><a class="dropdown-item fw-medium" href="{{ route('downloads.pengunduran-diri') }}">Format Surat Pengunduran Diri</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link px-3 fw-semibold text-dark" href="#">Bantuan</a>
+                            <a class="nav-link px-3 fw-semibold text-dark" href="{{ route('front.help') }}">Bantuan</a>
                         </li>
 
                     </ul>
