@@ -17,7 +17,7 @@
                         Dengan komitmen penuh terhadap kesejahteraan anggota internal, kami memastikan setiap transaksi simpanan, pengajuan pinjaman, hingga laporan operasional berjalan dengan tingkat akurasi tinggi dan real-time.
                     </p>
                     <div>
-                        <a href="#" class="btn btn-danger px-4 py-3 fw-bold" style="background-color: #856053; border: none; font-size: 14px; border-radius: 4px; transition: background-color 0.2s;">
+                        <a href="{{ route('about') }}" class="btn btn-danger px-4 py-3 fw-bold" style="background-color: #856053; border: none; font-size: 14px; border-radius: 4px; transition: background-color 0.2s;">
                             Pelajari Selengkapnya
                         </a>
                     </div>
@@ -26,7 +26,7 @@
 
             <div class="col-lg-6">
                 <div class="position-relative w-100" style="min-height: 450px;">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://inspektorat.jogjakota.go.id/assets/instansi/inspektorat/gallery/20241224081147_WhatsApp+Image+2024-12-23+at+17.59_.05_.jpeg'); background-size: cover; background-position: center; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);"></div>
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKJC_A4vZP3giJ_NlG35H-nM7vbiBRhicYdZAMP0vUZQ&s=10'); background-size: cover; background-position: center; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);"></div>
                     <div style="position: absolute; bottom: -30px; left: -30px; width: 200px; height: 200px; background-color: rgba(199, 59, 50, 0.05); z-index: -1; border-radius: 8px;"></div>
                 </div>
             </div>

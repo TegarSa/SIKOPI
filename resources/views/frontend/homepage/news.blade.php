@@ -22,7 +22,7 @@
             <div class="col-lg-7">
                 <div class="news-featured-card">
                     <div class="news-img-wrapper">
-                        <div class="news-img" style="background-image: url('https://thumb.viva.id/vivajogja/1265x711/2026/06/18/6a33eda0c14ac-sri-sultan-hb-x-dialog-daring-bersama-kementerian-dalam-negeri-ri_jogja.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="news-img" style="background-image: url('https://akcdn.detik.net.id/visual/2014/10/26/4ed01184-9051-4b4a-8f05-9d903fd8642c_169.jpg?w=400&q=90'); background-size: cover; background-position: center;"></div>
                     </div>
                     <div class="news-featured-content">
                         <div class="news-meta">
@@ -43,7 +43,7 @@
                 <div class="d-flex flex-column gap-4">
                     
                     <div class="news-list-card">
-                        <div class="news-img-thumb" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV8-hbLdvDeonMbJMS4xj2IZdafU5v5MpK22az__L3FsrTNuPQ_QrXHK4&s=10'); background-size: cover; background-position: center;"></div>
+                        <div class="news-img-thumb" style="background-image: url('https://kopma.ugm.ac.id/wp-content/uploads/sites/439/2022/06/Materi-Ekonomi-Kelas-10-Koperasi-02-1024x575-1.png'); background-size: cover; background-position: center;"></div>
                         <div class="news-list-content">
                             <div class="news-meta">
                                 <span class="news-date">02 Juni 2026</span>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="news-list-card">
-                        <div class="news-img-thumb" style="background-image: url('https://yogyakartakota.kemenag.go.id/wp-content/uploads/2025/07/WhatsApp-Image-2025-07-17-at-13.59.24-780x470.jpeg'); background-size: cover; background-position: center;"></div>
+                        <div class="news-img-thumb" style="background-image: url('https://nukilan.id/wp-content/uploads/2025/03/Ilustrasi-koperasi.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="news-list-content">
                             <div class="news-meta">
                                 <span class="news-date">15 Mei 2026</span>

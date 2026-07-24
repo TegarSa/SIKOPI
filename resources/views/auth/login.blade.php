@@ -73,19 +73,27 @@
                   <div class="d-flex justify-content-center flex-row col-auto">
                      <div class="d-flex flex-column justify-content-center" style="height: 600px;">
                         <h1 class="title-daftar-baru" style="margin-bottom: 32px;">Masuk</h1>
-                        @if (count($errors) > 0)
-                           @foreach ($errors->all() as $error)
-                              <div class="alert alert-danger alert-dismissible fade show alarm" role="alert">
-                                 <strong>Peringatan !!!</strong> {{ $error }}.
-                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                              </div>
-                           @endforeach
+                        @if($errors->has('auth'))
+                           <div class="alert alert-danger">
+                              {{ $errors->first('auth') }}
+                           </div>
+                        @endif
+                        @if ($errors->any())
+                           <div class="alert alert-danger alert-dismissible fade show alarm" role="alert">
+                              <strong>Peringatan !!!</strong>
+                              <ul class="mb-0 mt-1" style="padding-left: 20px;">
+                                 @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                 @endforeach
+                              </ul>
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                           </div>
                         @endif
                         <form action="{{ route('proses_login') }}" method="POST">
                            @csrf
                            <div class="form-group" style="margin-bottom: 16px;">
                               <label class="label-form">Username*</label>
-                              <input type="text" class="form-control input-form" name="username" placeholder="Masukan username anda">
+                              <input type="text" class="form-control input-form" name="username" placeholder="Masukan username anda" value="{{ old('username') }}">
                            </div>
                            <div class="form-group" style="margin-top: 16px;">
                               <label class="label-form">Password*</label>
@@ -100,7 +108,7 @@
                                  </span>
                               </div>
                            </div>
-                           <div class="row">
+                           <div class="row" style="margin-bottom: 24px;">
                               <div class="col-6">
                                  <div class="d-flex justify-content-start flex-row">
                                     <div class="form-group">
@@ -117,7 +125,14 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group" style="margin-top: 49px;">
+
+                           <div class="form-group d-flex flex-column align-items-start" style="margin-top: 20px; margin-bottom: 20px;">
+                              <label class="label-form" style="margin-bottom: 8px;">Verifikasi Keamanan*</label>
+                              
+                              <div class="cf-turnstile" data-sitekey="{{ env('TURNSTILE_SITE_KEY') }}" data-theme="light" data-width="strict"></div>
+                           </div>
+
+                           <div class="form-group" style="margin-top: 24px;">
                               <button type="submit" class="btn btn-lanjut">Masuk</button>
                            </div>
                         </form>
@@ -130,6 +145,8 @@
    </div>
 @endsection
 @section('js')
+   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
    <script>
       function change() {
          var x = document.getElementById('pass').type;

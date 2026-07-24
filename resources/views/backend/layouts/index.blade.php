@@ -14,6 +14,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
 
     <link rel="icon" type="image/png" href="{{ asset('assets/img/logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
     <title>SIKOPI - Dashboard Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link class="stylesheet" href="{{ asset('backend/css/light.css') }}" rel="stylesheet">
@@ -64,6 +65,15 @@
     @stack('js')
 
     <script>
+        @auth
+            if (!sessionStorage.getItem('tab_session_active')) {
+                window.location.href = "{{ route('logout') }}";
+            }
+        @endauth
+        sessionStorage.setItem('tab_session_active', 'true');
+    </script>
+
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
             var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
             var gradientLight = ctx.createLinearGradient(0, 0, 0, 225);
@@ -72,7 +82,6 @@
             var gradientDark = ctx.createLinearGradient(0, 0, 0, 225);
             gradientDark.addColorStop(0, "rgba(51, 66, 84, 1)");
             gradientDark.addColorStop(1, "rgba(51, 66, 84, 0)");
-            // Line chart
             new Chart(document.getElementById("chartjs-dashboard-line"), {
                 type: "line",
                 data: {
@@ -141,7 +150,6 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Pie chart
             new Chart(document.getElementById("chartjs-dashboard-pie"), {
                 type: "pie",
                 data: {
@@ -171,7 +179,6 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Bar chart
             new Chart(document.getElementById("chartjs-dashboard-bar"), {
                 type: "bar",
                 data: {

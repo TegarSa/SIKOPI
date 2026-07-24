@@ -85,7 +85,7 @@
                             <div class="col-sm-10">
                                 <select name="jenis_pinjaman" id="jenis_pinjaman" class="form-select" required>
                                     <option value="konsumtif" selected>Pinjaman Konsumtif (Bunga 6%, Max 36 Bulan)</option>
-                                    <option value="darurat">Pinjaman Darurat (Bunga 2%, Max 12 Bulan)</option>
+                                    <option value="darurat">Pinjaman Darurat (Bunga 24%, Max 12 Bulan)</option>
                                 </select>
                             </div>
                         </div>
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tenorBulan.value = Math.min(tenorBulan.value, 36); 
             tenorInfo.textContent = "Maksimal pengajuan: 36 bulan.";
         } else if (this.value === 'darurat') {
-            bungaFlat.value = 2;
+            bungaFlat.value = 24;
             tenorBulan.max = 12;
             // Jika tenor saat ini melebihi 12, turunkan otomatis ke 12
             tenorBulan.value = Math.min(tenorBulan.value, 12); 

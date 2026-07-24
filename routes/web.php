@@ -9,7 +9,6 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\SimpananController;
 use App\Http\Controllers\Dashboard\PinjamanController;
 use App\Http\Controllers\Dashboard\AngsuranController;
-use App\Http\Controllers\Dashboard\TransaksiController;
 use App\Http\Controllers\Dashboard\Ketua\KetuaPinjamanController;
 use App\Http\Controllers\Dashboard\Bendahara\ShuController;
 use App\Http\Controllers\Dashboard\Bendahara\LaporanKeuanganController;
@@ -18,6 +17,17 @@ use App\Http\Controllers\Dashboard\Bendahara\BendaharaPinjamanController;
 use App\Http\Controllers\Dashboard\Bendahara\BendaharaAngsuranController;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/tentang', [FrontController::class, 'about'])->name('about');
+Route::get('/layanan-peminjaman', [FrontController::class, 'services'])->name('services');
+Route::get('/layanan-simpanan', [FrontController::class, 'services2'])->name('services2');
+Route::get('/bantuan', [FrontController::class, 'help'])->name('front.help');
+
+Route::prefix('downloads')->name('downloads.')->group(function () {
+    Route::get('/keanggotaan', [FrontController::class, 'downloadKeanggotaan'])->name('keanggotaan');
+    Route::get('/potong-gaji', [FrontController::class, 'downloadPotongGaji'])->name('potong-gaji');
+    Route::get('/pinjaman', [FrontController::class, 'downloadPinjaman'])->name('pinjaman');
+    Route::get('/pengunduran-diri', [FrontController::class, 'downloadPengunduranDiri'])->name('pengunduran-diri');
+});
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');

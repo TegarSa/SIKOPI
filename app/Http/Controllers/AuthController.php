@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -14,40 +18,96 @@ class AuthController extends Controller
 
     public function proses_login(Request $request)
     {
-        $credentials = $request->validate([
+        $messages = [
+            'required' => 'Semua field wajib diisi dan diselesaikan.',
+        ];
+
+        $attributes = [
+            'username' => 'username',
+            'password' => 'password',
+            'cf-turnstile-response' => 'verifikasi keamanan',
+        ];
+
+        $validator = Validator::make($request->all(), [
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'cf-turnstile-response' => 'required',
+        ], $messages, $attributes);
+
+        if ($validator->fails()) {
+            $failedFieldsCount = count($validator->failed());
+
+            if ($failedFieldsCount >= 2) {
+                return back()->withErrors(['all' => 'Semua field wajib diisi dan diselesaikan.'])->withInput();
+            } else {
+                return back()->withErrors($validator)->withInput();
+            }
+        }
+
+        $throttleKey = Str::transliterate(Str::lower($request->input('username')).'|'.$request->ip());
+
+        if (RateLimiter::tooManyAttempts($throttleKey, 5)) {
+            $seconds = RateLimiter::availableIn($throttleKey);
+
+            return back()
+                ->withInput($request->only('username'))
+                ->withErrors([
+                    'auth' => "Terlalu banyak percobaan login. Silakan coba lagi dalam $seconds detik."
+                ]);
+        }
+
+        $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+            'secret'   => env('TURNSTILE_SECRET_KEY'),
+            'response' => $request->input('cf-turnstile-response'),
+            'remoteip' => $request->ip(),
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $captchaResult = $response->json();
+
+        if (!$captchaResult['success']) {
+            return back()
+                ->withInput($request->only('username'))
+                ->withErrors([
+                    'captcha' => 'Verifikasi keamanan gagal atau kadaluwarsa. Silakan coba lagi.'
+                ]);
+        }
+
+        $credentials = $request->only('username', 'password');
+        $remember = $request->filled('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
 
             $request->session()->regenerate();
 
             $user = Auth::user();
 
             if ($user->status != 'aktif') {
-
                 Auth::logout();
-
                 return back()->withErrors([
-                    'email' => 'Akun tidak aktif.'
+                    'status' => 'Akun Anda tidak aktif. Silakan hubungi admin.'
                 ]);
             }
+
+            RateLimiter::clear($throttleKey);
 
             return redirect()->route('dashboard');
         }
 
-        return back()->withErrors([
-            'username' => 'Username atau password salah.',
-        ]);
+        RateLimiter::hit($throttleKey, 60);
+
+        $attemptsLeft = RateLimiter::retriesLeft($throttleKey, 5);
+
+        return back()
+            ->withInput($request->only('username'))
+            ->withErrors([
+                'auth' => "Username atau password salah. Sisa percobaan: $attemptsLeft kali.",
+            ]);
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
@@ -56,14 +116,12 @@ class AuthController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-
         return view('backend.dashboard', compact('user'));
     }
 
     public function showProfile()
     {
         $user = Auth::user();
-
         return view('backend.profile.index', compact('user'));
     }
 
@@ -82,7 +140,6 @@ class AuthController extends Controller
         $user->username = $validated['username'];
 
         if ($request->hasFile('photo_profile')) {
-
             $file = $request->file('photo_profile');
             $photoName = time().'_'.$file->getClientOriginalName();
 
@@ -102,7 +159,6 @@ class AuthController extends Controller
         }
 
         if ($request->filled('password')) {
-
             $user->password = bcrypt($request->password);
         }
 

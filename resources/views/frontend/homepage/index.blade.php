@@ -10,7 +10,7 @@
                 <p class="hero-desc">Sistem transparan yang dirancang khusus untuk mempermudah tata kelola simpanan, pengajuan pinjaman, dan pemantauan buku kas bagi seluruh anggota secara real-time.</p>
                 <div class="hero-buttons">
                     <a href="{{ route('login') }}" class="btn btn-lg px-4 py-3 fw-bold me-3 text-white" style="background-color: #987776; border: none;">Mulai Sekarang</a>
-                    <a href="#" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">Panduan Sistem</a>
+                    <a href="{{ route('about') }}" class="btn btn-outline-light btn-lg px-4 py-3 fw-bold">Panduan Sistem</a>
                 </div>
             </div>
         </div>

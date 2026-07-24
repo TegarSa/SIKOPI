@@ -7,7 +7,9 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
     
     <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/custom_2.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -124,10 +126,21 @@
     
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
 
+    <script src="{{ asset('frontend/js/custom_2.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     
+    <script>
+        @auth
+            if (!sessionStorage.getItem('tab_session_active')) {
+                window.location.href = "{{ route('logout') }}";
+            }
+        @endauth
+        sessionStorage.setItem('tab_session_active', 'true');
+    </script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             if (typeof feather !== 'undefined') {

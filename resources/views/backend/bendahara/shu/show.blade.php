@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mt-0">
-                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Total Laba</h5>
+                            <h5 class="card-title text-muted text-uppercase fs-6 fw-bold">Volume Transaksi Diolah</h5>
                         </div>
                         <div class="col-auto">
                             <div class="stat text-success bg-success-light p-2 rounded-circle">
