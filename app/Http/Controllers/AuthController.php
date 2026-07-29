@@ -22,16 +22,30 @@ class AuthController extends Controller
             'required' => 'Semua field wajib diisi dan diselesaikan.',
         ];
 
+        // --- ATTRIBUTES LAMA (TURNSTILE) ---
+        // $attributes = [
+        //     'username' => 'username',
+        //     'password' => 'password',
+        //     'cf-turnstile-response' => 'verifikasi keamanan',
+        // ];
+
         $attributes = [
-            'username' => 'username',
-            'password' => 'password',
-            'cf-turnstile-response' => 'verifikasi keamanan',
+            'username'     => 'username',
+            'password'     => 'password',
+            'captcha_code' => 'verifikasi keamanan',
         ];
 
+        // --- VALIDASI LAMA (TURNSTILE) ---
+        // $validator = Validator::make($request->all(), [
+        //     'username' => 'required',
+        //     'password' => 'required',
+        //     'cf-turnstile-response' => 'required',
+        // ], $messages, $attributes);
+
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
-            'password' => 'required',
-            'cf-turnstile-response' => 'required',
+            'username'     => 'required',
+            'password'     => 'required',
+            'captcha_code' => 'required',
         ], $messages, $attributes);
 
         if ($validator->fails()) {
@@ -56,21 +70,47 @@ class AuthController extends Controller
                 ]);
         }
 
-        $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
-            'secret'   => env('TURNSTILE_SECRET_KEY'),
-            'response' => $request->input('cf-turnstile-response'),
-            'remoteip' => $request->ip(),
-        ]);
+        // ==========================================
+        // VERIFIKASI CAPTCHA ANGKA ACAK (CUSTOM)
+        // ==========================================
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        $captchaResult = $response->json();
+        $sessionCaptcha = $_SESSION['custom_captcha'] ?? null;
+        $userCaptcha    = strtolower(trim($request->input('captcha_code')));
 
-        if (!$captchaResult['success']) {
+        if (!$sessionCaptcha || $userCaptcha !== $sessionCaptcha) {
+            unset($_SESSION['custom_captcha']);
+
             return back()
                 ->withInput($request->only('username'))
                 ->withErrors([
-                    'captcha' => 'Verifikasi keamanan gagal atau kadaluwarsa. Silakan coba lagi.'
+                    'captcha' => 'Kode verifikasi keamanan (CAPTCHA) salah. Silakan coba lagi.'
                 ]);
         }
+
+        // Hapus session captcha setelah berhasil agar tidak bisa dipakai ulang
+        unset($_SESSION['custom_captcha']);
+
+        // ==========================================
+        // VERIFIKASI LAMA (CLOUDFLARE TURNSTILE)
+        // ==========================================
+        // $response = Http::asForm()->post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+        //     'secret'   => env('TURNSTILE_SECRET_KEY'),
+        //     'response' => $request->input('cf-turnstile-response'),
+        //     'remoteip' => $request->ip(),
+        // ]);
+        //
+        // $captchaResult = $response->json();
+        //
+        // if (!$captchaResult['success']) {
+        //     return back()
+        //         ->withInput($request->only('username'))
+        //         ->withErrors([
+        //             'captcha' => 'Verifikasi keamanan gagal atau kadaluwarsa. Silakan coba lagi.'
+        //         ]);
+        // }
 
         $credentials = $request->only('username', 'password');
         $remember = $request->filled('remember');
