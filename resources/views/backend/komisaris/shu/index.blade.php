@@ -60,11 +60,9 @@
 
                             <td>
 
-                                <a href="{{ route('komisaris.shu.show', $item->id) }}"
-                                   class="btn btn-info btn-sm">
-
-                                    Detail
-
+                                <a href="{{ route(auth()->user()->role . '.shu.show', $item->id) }}"
+                                    class="btn btn-info btn-sm">
+                                        Detail
                                 </a>
 
                             </td>

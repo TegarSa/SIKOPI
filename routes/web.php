@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Frontend\FrontController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\SimpananController;
 use App\Http\Controllers\Dashboard\PinjamanController;
 use App\Http\Controllers\Dashboard\AngsuranController;
+use App\Http\Controllers\Dashboard\TransaksiController;
 use App\Http\Controllers\Dashboard\Ketua\KetuaPinjamanController;
 use App\Http\Controllers\Dashboard\Bendahara\ShuController;
 use App\Http\Controllers\Dashboard\Bendahara\LaporanKeuanganController;
@@ -53,24 +55,47 @@ Route::middleware(['cek_login:admin'])->prefix('dashboard/admin')->group(functio
 
 });
 
-Route::middleware(['cek_login:komisaris,ketua'])->prefix('dashboard/komisaris')->group(function () {
+// Route::middleware(['cek_login:komisaris,ketua'])->prefix('dashboard/komisaris')->group(function () {
     
-    Route::get('/anggota', [AnggotaController::class, 'komisarisIndex'])->name('komisaris.anggota.index');
-    Route::get('/simpanan', [SimpananController::class, 'komisarisIndex'])->name('komisaris.simpanan.index');
-    Route::get('/pinjaman', [PinjamanController::class, 'komisarisIndex'])->name('komisaris.pinjaman.index');
-    Route::get('/pinjaman/{id}', [PinjamanController::class, 'komisarisDetail'])->name('komisaris.pinjaman.detail');
-    Route::get('/transaksi', [TransaksiController::class, 'komisarisIndex'])->name('komisaris.transaksi.index');
-    Route::get('/shu', [ShuController::class, 'komisarisIndex'])->name('komisaris.shu.index');
-    Route::get('/shu/{id}', [ShuController::class, 'komisarisShow'])->name('komisaris.shu.show');
+//     Route::get('/anggota', [AnggotaController::class, 'komisarisIndex'])->name('komisaris.anggota.index');
+//     Route::get('/simpanan', [SimpananController::class, 'komisarisIndex'])->name('komisaris.simpanan.index');
+//     Route::get('/pinjaman', [PinjamanController::class, 'komisarisIndex'])->name('komisaris.pinjaman.index');
+//     Route::get('/pinjaman/{id}', [PinjamanController::class, 'komisarisDetail'])->name('komisaris.pinjaman.detail');
+//     Route::get('/transaksi', [TransaksiController::class, 'komisarisIndex'])->name('komisaris.transaksi.index');
+//     Route::get('/shu', [ShuController::class, 'komisarisIndex'])->name('komisaris.shu.index');
+//     Route::get('/shu/{id}', [ShuController::class, 'komisarisShow'])->name('komisaris.shu.show');
 
-});
+// });
 
-Route::middleware(['cek_login:ketua'])->prefix('dashboard/ketua')->group(function () {
+// Route::middleware(['cek_login:ketua'])->prefix('dashboard/ketua')->group(function () {
 
-    Route::get('/pinjaman', [KetuaPinjamanController::class, 'index'])->name('ketua.pinjaman.index');
-    Route::get('/pinjaman/{id}', [KetuaPinjamanController::class, 'show'])->name('ketua.pinjaman.show');
-    Route::post('/pinjaman/{id}/approve', [KetuaPinjamanController::class, 'approve'])->name('ketua.pinjaman.approve');
-    Route::post('/pinjaman/{id}/reject', [KetuaPinjamanController::class, 'reject'])->name('ketua.pinjaman.reject');
+//     Route::get('/pinjaman', [KetuaPinjamanController::class, 'index'])->name('ketua.pinjaman.index');
+//     Route::get('/pinjaman/{id}', [KetuaPinjamanController::class, 'show'])->name('ketua.pinjaman.show');
+//     Route::post('/pinjaman/{id}/approve', [KetuaPinjamanController::class, 'approve'])->name('ketua.pinjaman.approve');
+//     Route::post('/pinjaman/{id}/reject', [KetuaPinjamanController::class, 'reject'])->name('ketua.pinjaman.reject');
+
+// });
+
+$sharedRoutes = function () {
+    Route::get('/anggota', [AnggotaController::class, 'komisarisIndex'])->name('anggota.index');
+    Route::get('/simpanan', [SimpananController::class, 'komisarisIndex'])->name('simpanan.index');
+    Route::get('/pinjaman', [PinjamanController::class, 'komisarisIndex'])->name('pinjaman.index');
+    Route::get('/pinjaman/{id}', [PinjamanController::class, 'komisarisDetail'])->name('pinjaman.detail');
+    Route::get('/transaksi', [TransaksiController::class, 'komisarisIndex'])->name('transaksi.index');
+    Route::get('/shu', [ShuController::class, 'komisarisIndex'])->name('shu.index');
+    Route::get('/shu/{id}', [ShuController::class, 'komisarisShow'])->name('shu.show');
+};
+
+Route::middleware(['cek_login:komisaris'])->prefix('dashboard/komisaris')->name('komisaris.')->group($sharedRoutes);
+
+Route::middleware(['cek_login:ketua'])->prefix('dashboard/ketua')->name('ketua.')->group(function () use ($sharedRoutes) {
+
+    $sharedRoutes();
+    
+    Route::get('/persetujuan-pinjaman', [KetuaPinjamanController::class, 'index'])->name('pinjaman-persetujuan.index');
+    Route::get('/persetujuan-pinjaman/{id}', [KetuaPinjamanController::class, 'show'])->name('pinjaman-persetujuan.show');
+    Route::post('/persetujuan-pinjaman/{id}/approve', [KetuaPinjamanController::class, 'approve'])->name('pinjaman-persetujuan.approve');
+    Route::post('/persetujuan-pinjaman/{id}/reject', [KetuaPinjamanController::class, 'reject'])->name('pinjaman-persetujuan.reject');
 
 });
 
