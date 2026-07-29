@@ -1,6 +1,32 @@
 @extends('auth.layout')
+
 @section('css')
+<style>
+   .captcha-box-wrapper {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-start;
+   }
+   .captcha-digit-input {
+      width: 42px;
+      height: 48px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background-color: #f8fafc;
+      transition: all 0.2s ease;
+   }
+   .captcha-digit-input:focus {
+      border-color: #3b82f6;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      outline: none;
+   }
+</style>
 @endsection
+
 @section('content')
    <div class="row">
       <div class="col-lg-6 sisi-kiri" id="sticky-sidebar" style="background-color: #1a232d; min-height: 100vh;">
@@ -129,8 +155,31 @@
                            <div class="form-group d-flex flex-column align-items-start" style="margin-top: 20px; margin-bottom: 20px;">
                               <label class="label-form" style="margin-bottom: 8px;">Verifikasi Keamanan*</label>
                               
-                              <div class="cf-turnstile" data-sitekey="{{ env('TURNSTILE_SITE_KEY') }}" data-theme="light" data-width="strict"></div>
+                              <div class="d-flex align-items-center gap-2 mb-3">
+                                 <img src="{{ url('captcha.php') }}" id="captcha-img" alt="Captcha" style="border-radius: 6px; border: 1px solid #cbd5e1; height: 55px;">
+                                 
+                                 <button type="button" class="btn btn-sm btn-outline-secondary" onclick="resetCaptchaBoxes()" style="height: 55px; width: 45px;">
+                                    <i class="fa-solid fa-rotate"></i>
+                                 </button>
+                              </div>
+
+                              <div class="captcha-box-wrapper mb-2">
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 1)" id="code_1" autocomplete="off" required>
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 2)" id="code_2" autocomplete="off" required>
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 3)" id="code_3" autocomplete="off" required>
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 4)" id="code_4" autocomplete="off" required>
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 5)" id="code_5" autocomplete="off" required>
+                                 <input type="text" class="captcha-digit-input" maxlength="1" pattern="[0-9]*" inputmode="numeric" onkeyup="moveNext(this, 6)" id="code_6" autocomplete="off" required>
+                              </div>
+
+                              <input type="hidden" name="captcha_code" id="real_captcha_code">
                            </div>
+
+                           <!-- <div class="form-group d-flex flex-column align-items-start" style="margin-top: 20px; margin-bottom: 20px;">
+                              <label class="label-form" style="margin-bottom: 8px;">Verifikasi Keamanan*</label>
+                              
+                              <div class="cf-turnstile" data-sitekey="{{ env('TURNSTILE_SITE_KEY') }}" data-theme="light" data-width="strict"></div>
+                           </div> -->
 
                            <div class="form-group" style="margin-top: 24px;">
                               <button type="submit" class="btn btn-lanjut">Masuk</button>
@@ -144,8 +193,9 @@
       </div>
    </div>
 @endsection
+
 @section('js')
-   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+   <!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 
    <script>
       function change() {
@@ -164,6 +214,40 @@
                                                             <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                                             </svg>`;
          }
+      }
+
+      function moveNext(current, index) {
+         if (current.value.length >= 1) {
+            if (index < 6) {
+               document.getElementById('code_' + (index + 1)).focus();
+            }
+         }
+         combineCaptchaDigits();
+      }
+
+      document.querySelectorAll('.captcha-digit-input').forEach((element, idx) => {
+         element.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && !this.value && idx > 0) {
+               document.getElementById('code_' + idx).focus();
+            }
+         });
+      });
+
+      function combineCaptchaDigits() {
+         let fullCode = '';
+         for (let i = 1; i <= 6; i++) {
+            fullCode += document.getElementById('code_' + i).value;
+         }
+         document.getElementById('real_captcha_code').value = fullCode;
+      }
+
+      function resetCaptchaBoxes() {
+         document.getElementById('captcha-img').src = '{{ url("captcha.php") }}?' + Math.random();
+         for (let i = 1; i <= 6; i++) {
+            document.getElementById('code_' + i).value = '';
+         }
+         document.getElementById('real_captcha_code').value = '';
+         document.getElementById('code_1').focus();
       }
    </script>
 @endsection
