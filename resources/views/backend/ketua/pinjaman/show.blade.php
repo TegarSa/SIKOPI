@@ -10,7 +10,7 @@
             Detail Pinjaman
         </h1>
 
-        <a href="{{ route('ketua.pinjaman.index') }}"
+        <a href="{{ route('ketua.pinjaman-persetujuan.index') }}"
            class="btn btn-secondary btn-sm">
 
             <i class="fas fa-arrow-left"></i>
@@ -20,7 +20,6 @@
 
     </div>
 
-    {{-- INFORMASI PINJAMAN --}}
     <div class="row match-height">
 
         <div class="col-md-6 mb-4">
@@ -107,7 +106,6 @@
 
     </div>
 
-    {{-- TABEL ANGSURAN --}}
     <div class="card">
 
         <div class="card-header">
@@ -186,14 +184,13 @@
 
     </div>
 
-    {{-- TOMBOL APPROVE REJECT --}}
     @if($pinjaman->status == 'pending')
 
     <div class="card">
 
         <div class="card-body text-end">
 
-            <form action="{{ route('ketua.pinjaman.reject', $pinjaman->id) }}"
+            <form action="{{ route('ketua.pinjaman-persetujuan.reject', $pinjaman->id) }}"
                   method="POST"
                   class="d-inline">
 
@@ -208,7 +205,7 @@
 
             </form>
 
-            <form action="{{ route('ketua.pinjaman.approve', $pinjaman->id) }}"
+            <form action="{{ route('ketua.pinjaman-persetujuan.approve', $pinjaman->id) }}"
                   method="POST"
                   class="d-inline">
 

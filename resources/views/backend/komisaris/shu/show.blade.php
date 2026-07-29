@@ -16,7 +16,7 @@
         </div>
 
         <div class="d-flex gap-2">
-            <a href="{{ route('komisaris.shu.index') }}" class="btn btn-secondary">
+            <a href="{{ route(auth()->user()->role . '.shu.index') }}" class="btn btn-secondary">
                 Kembali
             </a>
         </div>

@@ -113,15 +113,13 @@
 
                                 <td>
 
-                                    {{-- DETAIL --}}
-                                    <a href="{{ route('ketua.pinjaman.show', $item->id) }}"
+                                    <a href="{{ route('ketua.pinjaman-persetujuan.show', $item->id) }}"
                                        class="btn btn-secondary btn-sm">
 
                                         <i class="fas fa-eye"></i>
 
                                     </a>
 
-                                    {{-- APPROVE / REJECT --}}
                                     @if($item->status == 'pending')
 
                                         <div class="dropdown d-inline">
@@ -139,7 +137,7 @@
 
                                                 <li>
 
-                                                    <form action="{{ route('ketua.pinjaman.approve', $item->id) }}"
+                                                    <form action="{{ route('ketua.pinjaman-persetujuan.approve', $item->id) }}"
                                                           method="POST">
 
                                                         @csrf
@@ -157,7 +155,7 @@
 
                                                 <li>
 
-                                                    <form action="{{ route('ketua.pinjaman.reject', $item->id) }}"
+                                                    <form action="{{ route('ketua.pinjaman-persetujuan.reject', $item->id) }}"
                                                           method="POST">
 
                                                         @csrf

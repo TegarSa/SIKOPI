@@ -99,6 +99,53 @@
             {{-- ================= MENU BERSAMA (KOMISARIS & KETUA) ================= --}}
             @if(in_array(auth()->user()->role, ['komisaris', 'ketua']))
 
+            <li class="sidebar-item">
+                <a href="{{ route(auth()->user()->role . '.anggota.index') }}" class="sidebar-link">
+                    <i data-feather="users"></i>
+                    <span>Anggota</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route(auth()->user()->role . '.simpanan.index') }}" class="sidebar-link">
+                    <i data-feather="briefcase"></i>
+                    <span>Simpanan</span>
+                </a>
+            </li>
+
+            @if(auth()->user()->role === 'ketua')
+                <li class="sidebar-item">
+                    <a href="{{ route('ketua.pinjaman-persetujuan.index') }}" class="sidebar-link">
+                        <i data-feather="check-square"></i> 
+                        <span>Persetujuan Pinjaman</span> 
+                    </a>
+                </li>
+            @else
+                <li class="sidebar-item">
+                    <a href="{{ route('komisaris.pinjaman.index') }}" class="sidebar-link">
+                        <i data-feather="file-text"></i>
+                        <span>Data Pinjaman</span> 
+                    </a>
+                </li>
+            @endif
+
+            <li class="sidebar-item">
+                <a href="{{ route(auth()->user()->role . '.transaksi.index') }}" class="sidebar-link">
+                    <i data-feather="repeat"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a href="{{ route(auth()->user()->role . '.shu.index') }}" class="sidebar-link">
+                    <i data-feather="pie-chart"></i>
+                    <span>SHU</span>
+                </a>
+            </li>
+
+        @endif
+            <!-- @if(in_array(auth()->user()->role, ['komisaris', 'ketua']))
+
                 <li class="sidebar-item">
                     <a href="{{ route('komisaris.anggota.index') }}" class="sidebar-link">
                         <i data-feather="users"></i>
@@ -144,7 +191,7 @@
                     </a>
                 </li>
 
-            @endif
+            @endif -->
 
             {{-- ================= SEKRETARIS ================= --}}
             @if(auth()->user()->role === 'sekretaris')
